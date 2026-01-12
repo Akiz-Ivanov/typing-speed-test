@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-Light.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-Regular.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-Medium.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-SemiBold.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-Bold.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/sora/hinted-subset-Sora-ExtraBold.woff2') format('woff2'),
+    url('/fonts/sora/hinted-subset-Sora-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --color-neutral-900: hsl(var(--neutral-900));
+  --color-neutral-800: hsl(var(--neutral-800));
+  --color-neutral-500: hsl(var(--neutral-500));
+  --color-neutral-400: hsl(var(--neutral-400));
+  --color-neutral-0: hsl(var(--neutral-0));
+  --color-blue-600: hsl(var(--blue-600));
+  --color-blue-400: hsl(var(--blue-400));
+  --color-red-500: hsl(var(--red-500));
+  --color-green-500: hsl(var(--green-500));
+  --color-yellow-400: hsl(var(--yellow-400));
+
+  --font-family-sora: 'Sora', sans-serif;
+}
+
+:root {
+  /* Neutral */
+  --neutral-900: 0 0% 7%;
+  --neutral-800: 0 0% 15%;
+  --neutral-500: 240 3% 46%;
+  --neutral-400: 240 1% 59%;
+  --neutral-0: 0 0% 100%;
+
+  /* Blue */
+  --blue-600: 214 100% 55%;
+  --blue-400: 210 100% 65%;
+
+  /* Red */
+  --red-500: 354 63% 57%;
+
+  /* Green */
+  --green-500: 140 63% 57%;
+
+  /* Yellow */
+  --yellow-400: 49 85% 70%;
+
+  /* Font */
+  --font-sora: 'Sora', sans-serif;
+}
+
+@layer base {
+
+  #root,
+  html,
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+  }
+
+  body {
+    background: hsl(var(--neutral-900));
+    color: hsl(var(--neutral-0));
+    font-family: var(--font-sora);
+  }
+}
+
+@layer components {}
+
+@layer utilities {}
