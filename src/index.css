@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @font-face {
   font-family: 'Sora';
@@ -65,8 +66,17 @@
   --color-red-500: hsl(var(--red-500));
   --color-green-500: hsl(var(--green-500));
   --color-yellow-400: hsl(var(--yellow-400));
+  --color-hover-state: var(--hover-state-clr);
+  --color-active-state: var(--active-state-clr);
+  --color-ring: var(--ring);
+  --color-border: var(--border);
 
   --font-family-sora: 'Sora', sans-serif;
+
+  --breakpoint-xl-1200: 75rem;
+
+  --text-16-20: clamp(1rem, 0.7615rem + 1.0178vw, 1.25rem);
+
 }
 
 :root {
@@ -92,6 +102,13 @@
 
   /* Font */
   --font-sora: 'Sora', sans-serif;
+
+  --hover-state-clr: hsl(var(--blue-400));
+  --active-state-clr: hsl(var(--blue-400));
+
+  --border: hsl(var(--neutral-400));
+
+  --ring: hsl(var(--blue-400));
 }
 
 @layer base {
@@ -115,6 +132,35 @@
   }
 }
 
-@layer components {}
 
-@layer utilities {}
+@layer utilities {
+  .stats-bar {
+    @apply flex justify-between divide-x divide-neutral-700 md:w-fit;
+  }
+  
+  .stat {
+    @apply flex flex-col md:flex-row items-center gap-2 md:gap-3 w-full px-6;
+  }
+  
+  .stat > * {
+    @apply leading-none;
+  }
+  
+  .stat:first-child {
+    @apply pl-0;
+  }
+  
+  .stat:last-child {
+    @apply pr-0;
+  }
+  
+  .stat-label {
+    @apply text-16-20 text-neutral-400;
+  }
+  
+  .stat-value {
+    @apply font-bold text-2xl;
+  }
+}
+
+@layer components {}

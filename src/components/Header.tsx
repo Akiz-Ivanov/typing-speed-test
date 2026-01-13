@@ -1,6 +1,6 @@
-import logoSmall from "../assets/images/logo-small.svg"
-import logoLarge from "../assets/images/logo-large.svg"
-import personalBest from "../assets/images/icon-personal-best.svg"
+import logoSmall from "@/assets/images/logo-small.svg"
+import logoLarge from "@/assets/images/logo-large.svg"
+import personalBest from "@/assets/images/icon-personal-best.svg"
 
 const Header = () => {
 
