@@ -1,66 +1,119 @@
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { useState } from "react"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
+import arrowDown from "@/assets/images/icon-down-arrow.svg"
 
-type Difficulty = "easy" | "medium" | "hard"
-type TimeMode = "60s" | "Passage"
+type Difficulty = "Easy" | "Medium" | "Hard"
+type TimeMode = "Timed (60s)" | "Passage"
 
 const ControlBar = () => {
-  const [difficulty, setDifficulty] = useState<Difficulty>("medium")
-  const [timeMode, setTimeMode] = useState<TimeMode>("60s")
+  const [difficulty, setDifficulty] = useState<Difficulty>("Medium")
+  const [timeMode, setTimeMode] = useState<TimeMode>("Timed (60s)")
 
   return (
-    <div className="items-center justify-center divide-x divide-neutral-700 hidden md:flex">
+    <>
+      {/* Desktop & Tablet: ToggleGroup */}
+      <div className="items-center justify-center divide-x divide-neutral-700 hidden md:flex">
 
-      <div className="flex items-center justify-center gap-1.5 pr-4">
-        <label htmlFor="difficulty-toggle" className="text-neutral-400">
-          Difficulty:
-        </label>
-        <ToggleGroup
-          id="difficulty-toggle"
-          type="single"
-          value={difficulty}
-          onValueChange={(value) => {
-            if (value) setDifficulty(value as Difficulty);
-          }}
-          size="sm"
-          spacing={1.5}
-        >
-          <ToggleGroupItem value="easy" variant="outline">
-            Easy
-          </ToggleGroupItem>
-          <ToggleGroupItem value="medium" variant="outline" >
-            Medium
-          </ToggleGroupItem>
-          <ToggleGroupItem value="hard" variant="outline" >
-            Hard
-          </ToggleGroupItem>
-        </ToggleGroup>
+        <div className="flex items-center justify-center gap-1.5 pr-4">
+          <label htmlFor="difficulty-toggle" className="text-neutral-400">
+            Difficulty:
+          </label>
+          <ToggleGroup
+            id="difficulty-toggle"
+            type="single"
+            value={difficulty}
+            onValueChange={(value) => {
+              if (value) setDifficulty(value as Difficulty);
+            }}
+            size="sm"
+            spacing={1.5}
+          >
+            <ToggleGroupItem value="Easy" variant="outline">
+              Easy
+            </ToggleGroupItem>
+            <ToggleGroupItem value="Medium" variant="outline" >
+              Medium
+            </ToggleGroupItem>
+            <ToggleGroupItem value="Hard" variant="outline" >
+              Hard
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+
+        <div className="flex items-center justify-center gap-1.5 pl-4">
+          <label htmlFor="time-mode-toggle" className="text-neutral-400">
+            Mode:
+          </label>
+          <ToggleGroup
+            id="time-mode-toggle"
+            type="single"
+            value={timeMode}
+            onValueChange={(value) => {
+              if (value) setTimeMode(value as TimeMode);
+            }}
+            size="sm"
+            spacing={1.5}
+          >
+            <ToggleGroupItem value="Timed (60s)" variant="outline">
+              Timed (60s)
+            </ToggleGroupItem>
+            <ToggleGroupItem value="Passage" variant="outline" >
+              Passage
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+
       </div>
 
-      <div className="flex items-center justify-center gap-1.5 pl-4">
-        <label htmlFor="time-mode-toggle" className="text-neutral-400">
-          Mode:
-        </label>
-        <ToggleGroup
-          id="time-mode-toggle"
-          type="single"
-          value={timeMode}
-          onValueChange={(value) => {
-            if (value) setTimeMode(value as TimeMode);
-          }}
-          size="sm"
-          spacing={1.5}
-        >
-          <ToggleGroupItem value="60s" variant="outline">
-            Timed (60s)
-          </ToggleGroupItem>
-          <ToggleGroupItem value="Passage" variant="outline" >
-            Passage
-          </ToggleGroupItem>
-        </ToggleGroup>
-      </div>
 
-    </div>
+      {/* Mobile: Dropdowns */}
+      <div className="flex flex-row gap-2.5 md:hidden w-full">
+        <div className="flex items-center gap-2 w-full">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-2.5 border border-neutral-600 bg-neutral-800 rounded-lg px-3 py-2 text-neutral-0 hover:border-neutral-500 focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600/50 text-center">
+                {difficulty}
+                <img src={arrowDown} className="w-2.5 text-neutral-400" />
+              </button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
+              <DropdownMenuRadioGroup 
+                value={difficulty} 
+                onValueChange={(value) => setDifficulty(value as Difficulty)}
+              >
+                <DropdownMenuRadioItem value="Easy" className="rounded-none">Easy</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Medium" className="rounded-none">Medium</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Hard" className="rounded-none">Hard</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="flex justify-center items-center gap-2.5 border border-neutral-600 bg-neutral-800 rounded-lg px-3 py-2 text-neutral-0 hover:border-neutral-500 focus-visible:border-blue-600 focus-visible:ring-2 focus-visible:ring-blue-600/50 text-center">
+                {timeMode}
+                <img src={arrowDown} className="w-2.5 text-neutral-400" />
+              </button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
+              <DropdownMenuRadioGroup 
+                value={timeMode} 
+                onValueChange={(value) => setTimeMode(value as TimeMode)}
+              >
+                <DropdownMenuRadioItem value="Timed (60s)">Timed (60s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Passage">Passage</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+    </>
   )
 }
 
