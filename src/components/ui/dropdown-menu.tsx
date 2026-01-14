@@ -132,10 +132,18 @@ function DropdownMenuRadioItem({
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        <DropdownMenuPrimitive.ItemIndicator>
-          <CircleIcon className="size-2 fill-current" />
+      <span className="pointer-events-none absolute left-2 flex size-4 items-center justify-center">
+
+        {/* Unchecked circle (always visible) */}
+        <span className="size-4 rounded-full outline outline-neutral-0" />
+
+        {/* Checked overlay (only when selected) */}
+        <DropdownMenuPrimitive.ItemIndicator className="absolute inset-0 flex items-center justify-center">
+          <span className="flex size-4 items-center justify-center rounded-full outline-2 outline-blue-400 bg-blue-400">
+            <span className="size-1.5 rounded-full bg-neutral-900" />
+          </span>
         </DropdownMenuPrimitive.ItemIndicator>
+
       </span>
       {children}
     </DropdownMenuPrimitive.RadioItem>
