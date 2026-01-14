@@ -11,7 +11,7 @@ const toggleVariants = cva(
       variant: {
         default: "bg-transparent",
         outline:
-          "border border-border bg-transparent shadow-xs hover:border-hover-state data-[state=on]:border-active-state  focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:border-white",
+          "border border-border bg-transparent shadow-xs hover:border-hover-state data-[state=on]:border-active-state focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:border-white",
       },
       size: {
         default: "h-9 px-2 min-w-9",

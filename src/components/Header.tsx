@@ -6,10 +6,15 @@ const Header = () => {
 
   return (
     <header className="w-full mb-8 flex justify-between items-center">
-      <picture>
-        <source media="(min-width: 48rem)" srcSet={logoLarge} />
-        <img src={logoSmall} alt="Typing Speed Test logo." />
-      </picture>
+
+      <h1>
+        <picture>
+          <source media="(min-width: 48rem)" srcSet={logoLarge} />
+          <img
+            src={logoSmall}
+            alt="Typing Speed Test: Measure your typing speed and accuracy." />
+        </picture>
+      </h1>
 
       <div className="flex items-center gap-2.5">
 
