@@ -1,14 +1,30 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import confetti from "canvas-confetti"
 import iconCompleted from "@/assets/images/icon-completed.svg"
+import patternStar1 from "@/assets/images/pattern-star-2.svg"
+import patternStar2 from "@/assets/images/pattern-star-1.svg"
 import newPB from "@/assets/images/icon-new-pb.svg"
 import { cn } from "@/lib/utils"
-import iconRestart from "@/assets/images/icon-restart.svg"
 
 type Status = "first-test" | "personal-best" | "default"
 
 const Results = () => {
 
-  const [status, setStatus] = useState<Status>("default")
+  const [status, setStatus] = useState<Status>("personal-best")
+
+  useEffect(() => {
+    if (status === "personal-best") {
+
+      const colors = ["#3B82F6", "#EF4444", "#10B981", "#F59E0B"]
+      confetti({
+        particleCount: 150,
+        spread: 180,
+        origin: { y: 0.6 },
+        colors: colors
+      })
+    }
+  }, [status])
+
 
   const headerText = {
     "first-test": "Baseline Established!",
@@ -34,6 +50,22 @@ const Results = () => {
       "gap-6 md:gap-8",
     )}
     >
+
+      {(status === "first-test" || status === "default") && (
+        <>
+          <img
+            src={patternStar1}
+            alt=""
+            className="absolute left-4 top-30 md:left-12 md:top-34 size-5.5 md:size-8"
+          />
+          <img
+            src={patternStar2}
+            alt=""
+            className="absolute right-4 bottom-4 md:right-12 size-10 md:size-18.5"
+          />
+        </>
+      )}
+      
       {status === "personal-best" ?
         <img
           src={newPB}
