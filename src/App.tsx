@@ -2,12 +2,13 @@ import ControlBar from "@/components/ControlBar"
 import Header from "@/components/Header"
 import StatsBar from "@/components/StatsBar"
 import TypingArea from "./components/TypingArea"
-import { useState } from "react"
 import Results from "./components/Results"
+import { useTypingStore } from "./store/typingStore"
 
 function App() {
 
-  const [isGameOver, setIsGameOver] = useState(true)
+  const status = useTypingStore((state) => state.status)
+  const isGameOver = status === "complete"
 
   return (
     <div className="p-4 sm:p-6 md:px-8 mx-auto max-w-304">

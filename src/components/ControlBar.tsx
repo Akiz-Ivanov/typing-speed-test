@@ -1,14 +1,13 @@
-import { useState } from "react"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import arrowDown from "@/assets/images/icon-down-arrow.svg"
+import { useTypingStore } from "@/store/typingStore"
 
-type Difficulty = "Easy" | "Medium" | "Hard"
-type TimeMode = "Timed (60s)" | "Passage"
+import type { Difficulty, TimeMode } from "@/types/typing"
 
 const ControlBar = () => {
-  const [difficulty, setDifficulty] = useState<Difficulty>("Medium")
-  const [timeMode, setTimeMode] = useState<TimeMode>("Timed (60s)")
+
+  const { difficulty, timeMode, setDifficulty, setTimeMode } = useTypingStore((state) => state)
 
   return (
     <>

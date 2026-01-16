@@ -1,14 +1,15 @@
-type StartTestOverlayProps = {
-  handleClick: () => void
-}
+import { useTypingStore } from "@/store/typingStore"
 
-const StartTestOverlay = ({ handleClick }: StartTestOverlayProps) => {
+const StartTestOverlay = () => {
+
+  const startTest = useTypingStore((state) => state.startTest)
+
   return (
     <div className="
             absolute inset-0 z-50 
             flex flex-col items-center justify-center gap-5
             font-semibold text-[1.25rem]"
-      onClick={handleClick}
+      onClick={startTest}
     >
       <button
         type="button"
@@ -17,7 +18,7 @@ const StartTestOverlay = ({ handleClick }: StartTestOverlayProps) => {
               transition-all duration-200
               focus-visible:ring-offset-2 focus-visible:ring-offset-black
               focus-visible:ring-2 focus-visible:ring-active-state border-none outline-none active:scale-95"
-        onClick={handleClick}
+        // onClick={() => startTest()}
       >
         Start Typing Test
       </button>
