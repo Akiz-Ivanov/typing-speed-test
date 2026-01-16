@@ -54,7 +54,24 @@ export const useTypingStore = create<TypingState>((set, get) => ({
     set({ currentPassage: passages[randomIndex].text })
   },
 
+  handleBackspace: () => {
+    const state = get()
+    if (state.currentIndex === 0) return
+
+    set({
+      currentIndex: state.currentIndex - 1,
+      userInput: state.userInput.slice(0, -1),
+    })
+  },
+
   handleKeyPress: (key) => {
+
+    if (key.length > 1 && key !== 'Backspace') return
+
+    if (key === 'Backspace') {
+      get().handleBackspace()
+      return
+    }
 
     const state = get()
 

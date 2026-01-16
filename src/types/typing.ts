@@ -38,4 +38,5 @@ export interface TypingState {
   completeTest: () => void
   restartTest: () => void
   updateStats: () => void
+  handleBackspace: () => void
 }

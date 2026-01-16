@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { cn } from "@/lib/utils"
 import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
@@ -6,7 +6,18 @@ import { useTypingStore } from "@/store/typingStore"
 
 const TypingArea = () => {
   
-  const { status, currentPassage, difficulty, generateRandomPassage, restartTest } = useTypingStore((state) => state)
+  const { 
+    status, 
+    currentPassage, 
+    difficulty, 
+    currentIndex, 
+    userInput, 
+    generateRandomPassage, 
+    restartTest,
+    handleKeyPress,
+    completeTest
+  } = useTypingStore((state) => state)
+  
   const isActive = status === "active"
   const isIdle = status === "idle"
 
@@ -32,6 +43,23 @@ const TypingArea = () => {
     }
   }, [status])
 
+  useEffect(() => {
+    if (status !== "active") return
+
+    const handleKey = (e: KeyboardEvent) => {
+      e.preventDefault()
+      handleKeyPress(e.key)
+
+      // Check if test complete
+      if (currentIndex >= currentPassage.length - 1) {
+        completeTest()
+      }
+    }
+
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [status, currentIndex, currentPassage.length])
+
   const handleRestartClick = () => {
     restartTest()
   }
@@ -53,7 +81,19 @@ const TypingArea = () => {
             isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden"
           )}
           >
-            {currentPassage}
+            {currentPassage.split('').map((char, i) => (
+              <span
+                key={i}
+                className={cn(
+                  i < currentIndex && (
+                    userInput[i] === char ? 'text-green-500' : 'text-red-500 underline'
+                  ),
+                  i === currentIndex && 'bg-blue-400/20'
+                )}
+              >
+                {char}
+              </span>
+            ))}
           </p>
 
           {isIdle &&
