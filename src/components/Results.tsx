@@ -7,6 +7,7 @@ import newPB from "@/assets/images/icon-new-pb.svg"
 import { cn } from "@/lib/utils"
 import { useTypingStore } from "@/store/typingStore"
 import SharePopover from "./SharePopover"
+import { motion } from "framer-motion"
 
 const Results = () => {
 
@@ -56,6 +57,29 @@ const Results = () => {
     restartTest()
   }
 
+  const handleMobileShare = async () => {
+    if (!navigator.share) return
+
+    const text = `I just typed ${wpm} WPM with ${accuracy}% accuracy! Can you beat my score?`
+    const url = "https://yourtypingapp.com"
+
+    try {
+      await navigator.share({
+        title: "Typing Speed Test",
+        text,
+        url,
+      })
+    } catch (err) {
+      console.log("Share cancelled")
+    }
+  }
+
+
+  const isMobileShare =
+    typeof navigator !== "undefined" &&
+    typeof navigator.share === "function" &&
+    /Mobi|Android|iPhone/i.test(navigator.userAgent)
+
   return (
     <div className={cn(
       "w-full flex flex-col justify-center items-center text-center",
@@ -73,7 +97,7 @@ const Results = () => {
           <img
             src={patternStar2}
             alt=""
-            className="absolute right-4 bottom-4 md:right-12 size-10 md:size-18.5"
+            className="absolute right-4 bottom-0 md:bottom-4 md:right-12 size-10 md:size-18.5"
           />
         </>
       )}
@@ -134,8 +158,23 @@ const Results = () => {
         </div>
       </dl>
 
-      <div className="flex justify-center items-center gap-1.5">
-        <SharePopover wpm={wpm} accuracy={accuracy} />
+      <div className="flex justify-center items-center gap-2.5">
+        {isMobileShare ? (
+          <motion.button
+                onClick={handleMobileShare}
+                variants={{
+                  hidden: { scale: 0, opacity: 0 },
+                  visible: { scale: 1, opacity: 1 },
+                }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-neutral-800 rounded-full p-2.5 border border-neutral-700 text-white text-xs"
+              >
+                📱
+              </motion.button>
+        ) : (
+          <SharePopover wpm={wpm} accuracy={accuracy} />
+        )}
 
         <button
           type="button"

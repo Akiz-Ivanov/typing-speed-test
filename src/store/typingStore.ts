@@ -4,7 +4,6 @@ import data from "../../data.json"
 import type { TypingState } from '@/types/typing'
 
 export const useTypingStore = create<TypingState>((set, get) => ({
-  // Initial state
   difficulty: "Medium",
   timeMode: "Timed (60s)",
   status: "idle",
@@ -13,6 +12,7 @@ export const useTypingStore = create<TypingState>((set, get) => ({
   currentIndex: 0,
   startTime: null,
   elapsedTime: 0,
+  remainingTime: 60,
   wpm: 0,
   accuracy: 100,
   correctChars: 0,
@@ -30,14 +30,19 @@ export const useTypingStore = create<TypingState>((set, get) => ({
 
   setPersonalBest: (wpm) => set({ personalBest: wpm }),
 
-  startTest: () => set({
-    status: "active",
-    userInput: "",
-    currentIndex: 0,
-    startTime: Date.now(),
-    correctChars: 0,
-    incorrectChars: 0
-  }),
+  startTest: () => {
+    set({
+      status: "active",
+      userInput: "",
+      currentIndex: 0,
+      startTime: Date.now(),
+      correctChars: 0,
+      incorrectChars: 0
+    })
+    if (get().timeMode !== "Passage") {
+      get().startTimer()
+    }
+  },
 
   generateRandomPassage: () => {
     const state = get()
@@ -97,21 +102,39 @@ export const useTypingStore = create<TypingState>((set, get) => ({
     get().updateStats()
   },
 
+  startTimer: () => {
+    const interval = setInterval(() => {
+      const state = get()
+      if (!state.startTime || state.status !== "active") return
+
+      const now = Date.now()
+      const elapsed = Math.floor((now - state.startTime) / 1000)
+      const remaining = state.remainingTime - elapsed
+
+      set({ elapsedTime: remaining })
+
+      if (remaining <= 0) {
+        clearInterval(interval)
+        state.completeTest()
+      }
+    }, 1000)
+  },
+
   updateStats: () => {
-    const now = Date.now()
     const state = get()
 
     if (!state.startTime) return
 
-    const timeElapsed = (now - state.startTime) / 1000 / 60 // minutes
+    const timeElapsed = state.elapsedTime / 60
+    if (timeElapsed <= 0) return
+
     const totalChars = state.correctChars + state.incorrectChars
-    const wpm = Math.round((totalChars / 5) / timeElapsed)
+    const wpm = Math.round((state.correctChars / 5) / timeElapsed)
     const accuracy = Math.round((state.correctChars / totalChars) * 100)
 
     set({
       wpm: wpm || 0,
       accuracy: accuracy || 100,
-      elapsedTime: Math.floor((now - state.startTime) / 1000)
     })
   },
 

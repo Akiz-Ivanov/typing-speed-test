@@ -25,6 +25,12 @@ const TypingArea = () => {
     generateRandomPassage()
   }, [difficulty])
 
+  useEffect(() => {
+    if (status === "idle" && !currentPassage) {
+      generateRandomPassage()
+    }
+  }, [status, currentPassage])
+
   //* Prevent body scroll when test hasn't started
   useEffect(() => {
     if (isIdle) {
@@ -47,8 +53,11 @@ const TypingArea = () => {
     if (status !== "active") return
 
     const handleKey = (e: KeyboardEvent) => {
-      e.preventDefault()
-      handleKeyPress(e.key)
+
+      if (e.key.length === 1 || e.key === "Backspace") {
+        e.preventDefault()
+        handleKeyPress(e.key)
+      }
 
       // Check if test complete
       if (currentIndex >= currentPassage.length - 1) {

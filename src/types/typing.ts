@@ -16,6 +16,7 @@ export interface TypingState {
   // Stats
   startTime: number | null
   elapsedTime: number
+  remainingTime: number
   wpm: number
   accuracy: number
   correctChars: number
@@ -39,4 +40,5 @@ export interface TypingState {
   restartTest: () => void
   updateStats: () => void
   handleBackspace: () => void
+  startTimer: () => void
 }

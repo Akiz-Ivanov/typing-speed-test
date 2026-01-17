@@ -7,7 +7,19 @@ import type { Difficulty, TimeMode } from "@/types/typing"
 
 const ControlBar = () => {
 
-  const { difficulty, timeMode, setDifficulty, setTimeMode } = useTypingStore((state) => state)
+  const { difficulty, timeMode, setDifficulty, setTimeMode, restartTest } = useTypingStore((state) => state)
+
+  const onDifficultyChange = (value: Difficulty) => {
+    if (!value) return
+    setDifficulty(value)
+    restartTest()
+  }
+
+  const onTimeModeChange = (value: TimeMode) => {
+    if (!value) return
+    setTimeMode(value)
+    restartTest()
+  }
 
   return (
     <>
@@ -22,9 +34,7 @@ const ControlBar = () => {
             id="difficulty-toggle"
             type="single"
             value={difficulty}
-            onValueChange={(value) => {
-              if (value) setDifficulty(value as Difficulty);
-            }}
+            onValueChange={(value) => onDifficultyChange(value as Difficulty)}
             size="sm"
             spacing={1.5}
           >
@@ -48,9 +58,7 @@ const ControlBar = () => {
             id="time-mode-toggle"
             type="single"
             value={timeMode}
-            onValueChange={(value) => {
-              if (value) setTimeMode(value as TimeMode);
-            }}
+            onValueChange={(value) => onTimeModeChange(value as TimeMode)}
             size="sm"
             spacing={1.5}
           >
@@ -80,7 +88,7 @@ const ControlBar = () => {
             <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
               <DropdownMenuRadioGroup 
                 value={difficulty} 
-                onValueChange={(value) => setDifficulty(value as Difficulty)}
+                onValueChange={(value) => onDifficultyChange(value as Difficulty)}
               >
                 <DropdownMenuRadioItem value="Easy" className="rounded-none">Easy</DropdownMenuRadioItem>
                 <DropdownMenuSeparator />
@@ -102,7 +110,7 @@ const ControlBar = () => {
             <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
               <DropdownMenuRadioGroup 
                 value={timeMode} 
-                onValueChange={(value) => setTimeMode(value as TimeMode)}
+                onValueChange={(value) => onTimeModeChange(value as TimeMode)}
               >
                 <DropdownMenuRadioItem value="Timed (60s)">Timed (60s)</DropdownMenuRadioItem>
                 <DropdownMenuSeparator />

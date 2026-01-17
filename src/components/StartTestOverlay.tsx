@@ -8,7 +8,7 @@ const StartTestOverlay = () => {
     <div className="
             absolute inset-0 z-50 
             flex flex-col items-center justify-center gap-5
-            font-semibold text-[1.25rem]"
+            font-semibold text-[1.25rem] text-center"
       onClick={startTest}
     >
       <button
@@ -18,11 +18,10 @@ const StartTestOverlay = () => {
               transition-all duration-200
               focus-visible:ring-offset-2 focus-visible:ring-offset-black
               focus-visible:ring-2 focus-visible:ring-active-state border-none outline-none active:scale-95"
-        // onClick={() => startTest()}
       >
         Start Typing Test
       </button>
-      <p className="text-neutral-0 select-none">Or click the text and start typing</p>
+      <p className="text-neutral-0 select-none mx-auto">Or click the text and start typing</p>
     </div>
   )
 }
