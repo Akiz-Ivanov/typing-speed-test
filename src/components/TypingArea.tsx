@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
 import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
@@ -15,11 +15,13 @@ const TypingArea = () => {
     generateRandomPassage, 
     restartTest,
     handleKeyPress,
-    completeTest
   } = useTypingStore((state) => state)
   
   const isActive = status === "active"
-  const isIdle = status === "idle"
+  const isIdle = status === "idle"  
+
+  const inputRef = useRef<HTMLInputElement>(null)
+  const lastValueRef = useRef("")
 
   useEffect(() => {
     generateRandomPassage()
@@ -49,25 +51,31 @@ const TypingArea = () => {
     }
   }, [status])
 
+  // useEffect(() => {
+  //   if (status !== "active" || isMobile) return
+
+  //   const handleKey = (e: KeyboardEvent) => {
+
+  //     if (e.key.length === 1 || e.key === "Backspace") {
+  //       e.preventDefault()
+  //       handleKeyPress(e.key)
+  //     }
+
+  //     // Check if test complete
+  //     if (currentIndex >= currentPassage.length - 1) {
+  //       completeTest()
+  //     }
+  //   }
+
+  //   window.addEventListener('keydown', handleKey)
+  //   return () => window.removeEventListener('keydown', handleKey)
+  // }, [status, currentIndex, currentPassage.length])
+
   useEffect(() => {
-    if (status !== "active") return
-
-    const handleKey = (e: KeyboardEvent) => {
-
-      if (e.key.length === 1 || e.key === "Backspace") {
-        e.preventDefault()
-        handleKeyPress(e.key)
-      }
-
-      // Check if test complete
-      if (currentIndex >= currentPassage.length - 1) {
-        completeTest()
-      }
+    if (status === "active") {
+      inputRef.current?.focus()
     }
-
-    window.addEventListener('keydown', handleKey)
-    return () => window.removeEventListener('keydown', handleKey)
-  }, [status, currentIndex, currentPassage.length])
+  }, [status])
 
   const handleRestartClick = () => {
     restartTest()
@@ -80,10 +88,41 @@ const TypingArea = () => {
 
   //** add border-neutral-700 to restart button instead of typing area */
 
+
   return (
     <div>
       <div className="typing-area pb-8 md:pb-10 xl-1200:pb-16">
         <div className="relative">
+
+          <input
+            ref={inputRef}
+            type="text"
+            inputMode="text"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            className="absolute inset-0 opacity-0"
+            onChange={(e) => {
+              const newValue = e.target.value
+              const oldValue = lastValueRef.current
+
+              //* Characters added
+              if (newValue.length > oldValue.length) {
+                const added = newValue.slice(oldValue.length)
+
+                for (const char of added) {
+                  handleKeyPress(char)
+                }
+              }
+
+              //* Characters removed (backspace)
+              if (newValue.length < oldValue.length) {
+                handleKeyPress("Backspace")
+              }
+
+              lastValueRef.current = newValue
+            }}
+          />
 
           <p className={cn(
             "typing-area-text text-[2rem] md:text-[2.5rem] text-neutral-400 transition-all",
@@ -97,7 +136,7 @@ const TypingArea = () => {
                   i < currentIndex && (
                     userInput[i] === char ? 'text-green-500' : 'text-red-500 underline'
                   ),
-                  i === currentIndex && 'bg-blue-400/20'
+                  i === currentIndex && 'bg-blue-400/20 rounded-md'
                 )}
               >
                 {char}

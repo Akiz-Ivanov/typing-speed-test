@@ -7,7 +7,6 @@ import newPB from "@/assets/images/icon-new-pb.svg"
 import { cn } from "@/lib/utils"
 import { useTypingStore } from "@/store/typingStore"
 import SharePopover from "./SharePopover"
-import { motion } from "framer-motion"
 
 const Results = () => {
 
@@ -23,14 +22,37 @@ const Results = () => {
 
   useEffect(() => {
     if (resultStatus === "personal-best") {
+      const colors = ["#3B82F6", "#EF4444", "#10B981", "#F59E0B", "#8B5CF6"]
 
-      const colors = ["#3B82F6", "#EF4444", "#10B981", "#F59E0B"]
+      // Main burst
       confetti({
-        particleCount: 150,
-        spread: 180,
+        particleCount: 180,
+        spread: 120,
         origin: { y: 0.6 },
-        colors: colors
+        colors,
+        gravity: 0.8,
+        scalar: 1.2,
       })
+
+      // Side bursts
+      setTimeout(() => {
+        confetti({
+          particleCount: 70,
+          angle: 60,
+          spread: 85,
+          origin: { x: 0.1, y: 0.8 },
+          colors,
+          startVelocity: 45,
+        })
+        confetti({
+          particleCount: 70,
+          angle: 120,
+          spread: 85,
+          origin: { x: 0.9, y: 0.8 },
+          colors,
+          startVelocity: 45,
+        })
+      }, 200)
     }
   }, [resultStatus])
 
@@ -57,28 +79,10 @@ const Results = () => {
     restartTest()
   }
 
-  const handleMobileShare = async () => {
-    if (!navigator.share) return
-
-    const text = `I just typed ${wpm} WPM with ${accuracy}% accuracy! Can you beat my score?`
-    const url = "https://yourtypingapp.com"
-
-    try {
-      await navigator.share({
-        title: "Typing Speed Test",
-        text,
-        url,
-      })
-    } catch (err) {
-      console.log("Share cancelled")
-    }
-  }
-
-
-  const isMobileShare =
-    typeof navigator !== "undefined" &&
-    typeof navigator.share === "function" &&
-    /Mobi|Android|iPhone/i.test(navigator.userAgent)
+  const accuracyColor =
+    accuracy === 100 ? "text-green-400" :
+      accuracy >= 80 ? "text-yellow-400"
+        : "text-red-500"
 
   return (
     <div className={cn(
@@ -135,7 +139,7 @@ const Results = () => {
 
         <div className="results-stat-container">
           <dt className="stat-label">Accuracy:</dt>
-          <dd className="stat-value text-red-500">{accuracy}%</dd>
+          <dd className={`stat-value ${accuracyColor}`}>{accuracy}%</dd>
         </div>
 
         <div className="results-stat-container">
@@ -144,37 +148,19 @@ const Results = () => {
             <span className="text-green-500">
               {correctChars}
             </span>
-            {incorrectChars > 0 && (
-              <>
-                <span className="text-neutral-500">
-                  /
-                </span>
-                <span className="text-red-500">
-                  {incorrectChars}
-                </span>
-              </>
-            )}
+            <span className="text-neutral-500">
+              /
+            </span>
+            <span className="text-red-500">
+              {incorrectChars}
+            </span>
           </dd>
         </div>
       </dl>
 
       <div className="flex justify-center items-center gap-2.5">
-        {isMobileShare ? (
-          <motion.button
-                onClick={handleMobileShare}
-                variants={{
-                  hidden: { scale: 0, opacity: 0 },
-                  visible: { scale: 1, opacity: 1 },
-                }}
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-neutral-800 rounded-full p-2.5 border border-neutral-700 text-white text-xs"
-              >
-                📱
-              </motion.button>
-        ) : (
-          <SharePopover wpm={wpm} accuracy={accuracy} />
-        )}
+
+        <SharePopover wpm={wpm} accuracy={accuracy} />
 
         <button
           type="button"

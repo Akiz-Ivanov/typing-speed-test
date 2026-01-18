@@ -166,11 +166,29 @@
     backdrop-filter: blur(1rem);
   }
 
+  @keyframes green-pulse {
+    0% {
+      box-shadow:
+        0 0 0 0 color-mix(in srgb, hsl(var(--green-500)) 40%, transparent),
+        0 0 0 0 color-mix(in srgb, hsl(var(--green-500)) 20%, transparent);
+    }
+
+    70% {
+      box-shadow:
+        0 0 0 16px color-mix(in srgb, hsl(var(--green-500)) 0%, transparent),
+        0 0 0 32px color-mix(in srgb, hsl(var(--green-500)) 0%, transparent);
+    }
+
+    100% {
+      box-shadow:
+        0 0 0 0 color-mix(in srgb, hsl(var(--green-500)) 0%, transparent),
+        0 0 0 0 color-mix(in srgb, hsl(var(--green-500)) 0%, transparent);
+    }
+  }
+
   .green-glow {
     --glow-color: hsl(var(--green-500));
-    box-shadow:
-      0 0 0 16px color-mix(in srgb, var(--glow-color) 20%, transparent),
-      0 0 0 32px color-mix(in srgb, var(--glow-color) 10%, transparent);
+    animation: green-pulse 3s infinite;
   }
 
   .results-stat-container {

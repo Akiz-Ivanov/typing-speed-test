@@ -28,9 +28,10 @@ function App() {
               <StatsBar />
               <ControlBar />
               <div
-                className="absolute left-0 bottom-0 h-px bg-blue-600 transition-all duration-200"
+                className="absolute left-0 bottom-0 h-0.5 bg-blue-500 transition-all duration-300 shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
                 style={{ width: `${progress * 100}%` }}
               />
+              
             </div>
           )}
           {!isTestOver && <TypingArea />}

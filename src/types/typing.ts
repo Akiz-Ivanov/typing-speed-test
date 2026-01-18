@@ -16,7 +16,6 @@ export interface TypingState {
   // Stats
   startTime: number | null
   elapsedTime: number
-  remainingTime: number
   wpm: number
   accuracy: number
   correctChars: number

@@ -4,6 +4,11 @@ const StatsBar = () => {
 
   const { wpm, accuracy, elapsedTime } = useTypingStore((state) => state)
 
+  const accuracyColor = 
+  accuracy === 100 ? "text-green-400" :
+  accuracy >= 80 ? "text-yellow-400"
+  : "text-red-500"
+
   return (
     <dl className="stats-bar">
       <div className="stat">
@@ -13,7 +18,7 @@ const StatsBar = () => {
 
       <div className="stat">
         <dt className="stat-label">Accuracy:</dt>
-        <dd className="stat-value text-red-500">{accuracy}%</dd>
+        <dd className={`stat-value ${accuracyColor}`}>{accuracy}%</dd>
       </div>
 
       <div className="stat">
