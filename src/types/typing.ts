@@ -1,5 +1,11 @@
 export type Difficulty = "Easy" | "Medium" | "Hard"
-export type TimeMode = "Timed (60s)" | "Passage"
+export type TimeMode =
+  | "Timed (15s)"
+  | "Timed (30s)"
+  | "Timed (45s)"
+  | "Timed (60s)"
+  | "Timed (120s)"
+  | "Passage"
 type TestStatus = "idle" | "active" | "complete"
 
 export interface TypingState {

@@ -136,6 +136,7 @@
 
   .stat {
     @apply flex flex-col md:flex-row items-center gap-2 md:gap-3 w-full px-6;
+
   }
 
   .stat>* {
@@ -155,7 +156,7 @@
   }
 
   .stat-value {
-    @apply font-bold text-2xl;
+    @apply font-bold text-2xl md:min-w-14 text-center;
   }
 
   .typing-area-text {

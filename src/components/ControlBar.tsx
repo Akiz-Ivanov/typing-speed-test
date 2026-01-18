@@ -38,13 +38,13 @@ const ControlBar = () => {
             size="sm"
             spacing={1.5}
           >
-            <ToggleGroupItem value="Easy" variant="outline">
+            <ToggleGroupItem value="Easy" variant="outline" className="text-base" >
               Easy
             </ToggleGroupItem>
-            <ToggleGroupItem value="Medium" variant="outline" >
+            <ToggleGroupItem value="Medium" variant="outline" className="text-base" >
               Medium
             </ToggleGroupItem>
-            <ToggleGroupItem value="Hard" variant="outline" >
+            <ToggleGroupItem value="Hard" variant="outline" className="text-base" >
               Hard
             </ToggleGroupItem>
           </ToggleGroup>
@@ -54,25 +54,42 @@ const ControlBar = () => {
           <label htmlFor="time-mode-toggle" className="text-neutral-400">
             Mode:
           </label>
-          <ToggleGroup
-            id="time-mode-toggle"
-            type="single"
-            value={timeMode}
-            onValueChange={(value) => onTimeModeChange(value as TimeMode)}
-            size="sm"
-            spacing={1.5}
-          >
-            <ToggleGroupItem value="Timed (60s)" variant="outline">
-              Timed (60s)
-            </ToggleGroupItem>
-            <ToggleGroupItem value="Passage" variant="outline" >
-              Passage
-            </ToggleGroupItem>
-          </ToggleGroup>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                className="flex justify-center items-center gap-2.5 border
+                  border-border bg-neutral-800 rounded-lg px-4 py-4 text-neutral-0 
+                  hover:border-blue-400 hover:text-blue-400 focus-visible:border-blue-600 focus-visible:ring-2 
+                  focus-visible:ring-blue-600/50 text-center h-8 min-w-8 cursor-pointer 
+                  transition-[color,box-shadow] duration-200">
+                {timeMode}
+                <img src={arrowDown} className="w-2.5 text-neutral-400" />
+              </button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
+              <DropdownMenuRadioGroup
+                value={timeMode}
+                onValueChange={(value) => onTimeModeChange(value as TimeMode)}
+              >
+                <DropdownMenuRadioItem value="Passage">Passage</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (60s)">Timed (60s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (120s)">Timed (120s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (15s)">Timed (15s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (30s)">Timed (30s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (45s)">Timed (45s)</DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
       </div>
-
 
       {/* Mobile: Dropdowns */}
       <div className="flex flex-row gap-2.5 md:hidden w-full">
@@ -86,8 +103,8 @@ const ControlBar = () => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
-              <DropdownMenuRadioGroup 
-                value={difficulty} 
+              <DropdownMenuRadioGroup
+                value={difficulty}
                 onValueChange={(value) => onDifficultyChange(value as Difficulty)}
               >
                 <DropdownMenuRadioItem value="Easy" className="rounded-none">Easy</DropdownMenuRadioItem>
@@ -108,13 +125,21 @@ const ControlBar = () => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="start" className="w-[var(--radix-dropdown-menu-trigger-width)]">
-              <DropdownMenuRadioGroup 
-                value={timeMode} 
+              <DropdownMenuRadioGroup
+                value={timeMode}
                 onValueChange={(value) => onTimeModeChange(value as TimeMode)}
               >
+                <DropdownMenuRadioItem value="Passage">Passage</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuRadioItem value="Timed (60s)">Timed (60s)</DropdownMenuRadioItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuRadioItem value="Passage">Passage</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="Timed (120s)">Timed (120s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (15s)">Timed (15s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (30s)">Timed (30s)</DropdownMenuRadioItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioItem value="Timed (45s)">Timed (45s)</DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
