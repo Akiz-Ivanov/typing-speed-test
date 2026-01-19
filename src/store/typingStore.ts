@@ -9,7 +9,7 @@ let timerInterval: number | null = null
 export const useTypingStore = create<TypingState>()(
   persist(
     (set, get) => ({
-      difficulty: "Medium",
+      difficulty: "Easy",
       timeMode: "Timed (60s)",
       status: "idle",
       currentPassage: "",

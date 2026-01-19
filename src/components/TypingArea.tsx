@@ -105,6 +105,7 @@ const TypingArea = () => {
     <div>
       <div className="typing-area pb-8 md:pb-10 xl-1200:pb-16">
         <div className="relative">
+
           <input
             ref={inputRef}
             type="text"
