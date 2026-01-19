@@ -195,4 +195,28 @@
   .results-stat-container {
     @apply border border-neutral-700 px-6 py-4 w-full rounded-base flex flex-col items-baseline justify-center gap-2 lg:basis-40;
   }
+
+  .history-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .history-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--neutral-900));
+    border-radius: 4px;
+  }
+
+  .history-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--neutral-700));
+    border-radius: 4px;
+  }
+
+  .history-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--neutral-600));
+  }
+
+  /* Firefox */
+  .history-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--neutral-700)) hsl(var(--neutral-900));
+  }
 }

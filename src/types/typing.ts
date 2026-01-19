@@ -7,33 +7,39 @@ export type TimeMode =
   | "Timed (120s)"
   | "Passage"
 type TestStatus = "idle" | "active" | "complete"
-
+export interface TestResult {
+  id: string;
+  wpm: number;
+  accuracy: number;
+  difficulty: Difficulty;
+  timeMode: TimeMode;
+  date: string;
+  correctChars: number;
+  incorrectChars: number;
+}
 export interface TypingState {
-  // Settings
+  //* Settings
   difficulty: Difficulty
   timeMode: TimeMode
 
-  // Test state
+  //* Test state
   status: TestStatus
   currentPassage: string
   userInput: string
   currentIndex: number
 
-  // Stats
+  //* Stats
   startTime: number | null
   elapsedTime: number
   wpm: number
   accuracy: number
   correctChars: number
   incorrectChars: number
-
-  // Personal best
   personalBest: number
-
-  // Results
   resultStatus: "first-test" | "personal-best" | "default"
+  testHistory: TestResult[]
 
-  // Actions
+  //* Actions
   setCurrentPassage: (passage: string) => void
   setDifficulty: (difficulty: Difficulty) => void
   setTimeMode: (mode: TimeMode) => void
@@ -46,4 +52,6 @@ export interface TypingState {
   updateStats: () => void
   handleBackspace: () => void
   startTimer: () => void
+  addToHistory: (result: Omit<TestResult, 'id' | 'date'>) => void
+  clearHistory: () => void
 }

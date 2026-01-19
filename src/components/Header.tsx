@@ -2,6 +2,7 @@ import logoSmall from "@/assets/images/logo-small.svg"
 import logoLarge from "@/assets/images/logo-large.svg"
 import personalBestSvg from "@/assets/images/icon-personal-best.svg"
 import { useTypingStore } from "@/store/typingStore"
+import HistoryDialog from "./HistoryDialog"
 
 const Header = () => {
 
@@ -30,6 +31,8 @@ const Header = () => {
           </span>
           <span className="text-neutral-0 text-lg">{personalBest} WPM</span>
         </p>
+
+        <HistoryDialog />
 
       </div>
     </header>

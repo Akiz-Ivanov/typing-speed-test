@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 import data from "../../data.json"
-import type { TypingState } from '@/types/typing'
+import type { TestResult, TypingState } from '@/types/typing'
 import { persist } from 'zustand/middleware'
-import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode'
+import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode' 
 
 let timerInterval: number | null = null
 
@@ -23,6 +23,7 @@ export const useTypingStore = create<TypingState>()(
       incorrectChars: 0,
       personalBest: 0,
       resultStatus: "first-test",
+      testHistory: [],
 
       setCurrentPassage: (passage) => set({ currentPassage: passage }),
 
@@ -31,6 +32,21 @@ export const useTypingStore = create<TypingState>()(
       setTimeMode: (timeMode) => set({ timeMode }),
 
       setPersonalBest: (wpm) => set({ personalBest: wpm }),
+
+      addToHistory: (result: Omit<TestResult, 'id' | 'date'>) => set((state) => {
+        const newEntry: TestResult = {
+          ...result,
+          id: Date.now().toString(),
+          date: new Date().toISOString(),
+        }
+
+        //* Last 50 entries
+        const updatedHistory = [newEntry, ...state.testHistory].slice(0, 50)
+
+        return { testHistory: updatedHistory }
+      }),
+
+      clearHistory: () => set({ testHistory: [] }),
 
       startTest: () => {
         const state = get()
@@ -213,25 +229,11 @@ export const useTypingStore = create<TypingState>()(
           timerInterval = null
         }
 
-        //* Calculate final WPM for timed mode
-        if (state.timeMode !== "Passage") {
-          const timeLimit = parseTimeFromTimeMode(state.timeMode)
-          if (timeLimit) {
-            const elapsedMinutes = timeLimit / 60 //* Full time limit in minutes
-            const totalChars = state.correctChars + state.incorrectChars
-            const wpm = Math.round((state.correctChars / 5) / elapsedMinutes)
-            const accuracy = totalChars > 0
-              ? Math.round((state.correctChars / totalChars) * 100)
-              : 100
-
-            set({ wpm, accuracy })
-          }
-        }
-
+        const finalWPM = state.wpm
+        const finalAccuracy = state.accuracy
         const oldPersonalBest = state.personalBest
-        const currentWPM = state.wpm
         const isFirstTest = oldPersonalBest === 0
-        const isNewPersonalBest = currentWPM > oldPersonalBest
+        const isNewPersonalBest = finalWPM > oldPersonalBest
 
         let resultStatus: "first-test" | "personal-best" | "default"
         if (isFirstTest) {
@@ -242,10 +244,21 @@ export const useTypingStore = create<TypingState>()(
           resultStatus = "default"
         }
 
+        //* Update state
         set({
           status: "complete",
           resultStatus,
-          personalBest: isNewPersonalBest || isFirstTest ? currentWPM : oldPersonalBest
+          personalBest: isNewPersonalBest || isFirstTest ? finalWPM : oldPersonalBest
+        })
+
+        //* Add to history
+        state.addToHistory({
+          wpm: finalWPM,
+          accuracy: finalAccuracy,
+          difficulty: state.difficulty,
+          timeMode: state.timeMode,
+          correctChars: state.correctChars,
+          incorrectChars: state.incorrectChars,
         })
       },
 
@@ -279,6 +292,7 @@ export const useTypingStore = create<TypingState>()(
         personalBest: state.personalBest,
         difficulty: state.difficulty,
         timeMode: state.timeMode,
+        testHistory: state.testHistory,
       }),
     }
   )

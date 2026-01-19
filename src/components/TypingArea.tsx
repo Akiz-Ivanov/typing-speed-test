@@ -16,6 +16,7 @@ const TypingArea = () => {
     generateRandomPassage,
     restartTest,
     handleKeyPress,
+    startTest
   } = useTypingStore((state) => state)
 
   const isActive = status === "active"
@@ -59,6 +60,26 @@ const TypingArea = () => {
       inputRef.current?.focus()
     }
   }, [status])
+
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      //* Ignore modifier keys, function keys, etc.
+      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (status === "idle") {
+          e.preventDefault()
+          startTest()
+          //* Focus the input
+          setTimeout(() => inputRef.current?.focus(), 0)
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleGlobalKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleGlobalKeyDown)
+    }
+  }, [status, startTest])
 
   const handleRestartClick = () => {
     restartTest()
