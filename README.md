@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/Akiz-Ivanov/typing-speed-test](https://github.com/Akiz-Ivanov/typing-speed-test)
-- Live Site URL: [https://typing-speed-test-akizs-projects.vercel.app/](https://typing-speed-test-akizs-projects.vercel.app/)
+- Live Site URL: [https://typing-speed-test-iota-flame.vercel.app/](https://typing-speed-test-iota-flame.vercel.app/)
 
 ## My process
 
