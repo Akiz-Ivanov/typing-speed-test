@@ -12,6 +12,7 @@ const TypingArea = () => {
     status,
     currentPassage,
     difficulty,
+    textCategory,
     currentIndex,
     userInput,
     timeMode,
@@ -28,13 +29,12 @@ const TypingArea = () => {
   const isIdle = status === "idle"
 
   const inputRef = useRef<HTMLInputElement>(null)
-  // const lastValueRef = useRef("")
 
   useScrollToCurrentChar()
 
   useEffect(() => {
     generateRandomPassage()
-  }, [difficulty])
+  }, [difficulty, textCategory])
 
   useEffect(() => {
     if (status === "idle" && !currentPassage) {
@@ -171,7 +171,7 @@ const TypingArea = () => {
                   i < currentIndex && (
                     userInput[i] === char ? 'text-green-500' : 'text-red-500 underline'
                   ),
-                  i === currentIndex && 'bg-blue-400/20 rounded-md'
+                  isActive && i === currentIndex && 'bg-blue-400/20 rounded-md'
                 )}
               >
                 {char}

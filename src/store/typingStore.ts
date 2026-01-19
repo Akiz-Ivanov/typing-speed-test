@@ -1,14 +1,15 @@
 import { create } from 'zustand'
-import data from "../../data.json"
 import type { TestResult, TypingState } from '@/types/typing'
 import { persist } from 'zustand/middleware'
-import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode' 
+import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode'
+import { getRandomText, getTextsByCategory } from '@/services/dataService'
 
 let timerInterval: number | null = null
 
 export const useTypingStore = create<TypingState>()(
   persist(
     (set, get) => ({
+      textCategory: "passages",
       difficulty: "Easy",
       timeMode: "Timed (60s)",
       status: "idle",
@@ -26,11 +27,9 @@ export const useTypingStore = create<TypingState>()(
       testHistory: [],
 
       setCurrentPassage: (passage) => set({ currentPassage: passage }),
-
+      setTextCategory: (textCategory) => set({ textCategory }),
       setDifficulty: (difficulty) => set({ difficulty }),
-
       setTimeMode: (timeMode) => set({ timeMode }),
-
       setPersonalBest: (wpm) => set({ personalBest: wpm }),
 
       addToHistory: (result: Omit<TestResult, 'id' | 'date'>) => set((state) => {
@@ -71,25 +70,26 @@ export const useTypingStore = create<TypingState>()(
         state.startTimer()
       },
 
-      generateRandomPassage: () => {
+      generateRandomPassage: async () => {
         const state = get()
-        const difficultyLevel = state.difficulty.toLowerCase() as keyof typeof data
-        const passages = data[difficultyLevel]
+        const { textCategory, difficulty } = state
 
-        if (!passages || passages.length === 0) {
-          console.error(`No passages found for difficulty: ${difficultyLevel}`)
-          set({ currentPassage: "Error: No passages available" })
-          return
+        try {
+          //* Load data for category if not cached
+          await getTextsByCategory(textCategory)
+
+          //* Get random text
+          const passage = getRandomText(textCategory, difficulty)
+
+          // Normalize hyphens
+          const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
+
+          set({ currentPassage: normalized })
+        } catch (error) {
+          console.error('Failed to generate passage:', error)
+          // Fallback to a default message
+          set({ currentPassage: "Error: Unable to load text. Please try again." })
         }
-
-        const randomIndex = Math.floor(Math.random() * passages.length)
-
-        const passage = passages[randomIndex].text
-
-        //* Normalize hyphens
-        const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-');
-
-        set({ currentPassage: normalized })
       },
 
       handleBackspace: () => {
@@ -289,6 +289,7 @@ export const useTypingStore = create<TypingState>()(
       name: 'typing-test-storage',
       partialize: (state) => ({
         personalBest: state.personalBest,
+        textCategory: state.textCategory,
         difficulty: state.difficulty,
         timeMode: state.timeMode,
         testHistory: state.testHistory,

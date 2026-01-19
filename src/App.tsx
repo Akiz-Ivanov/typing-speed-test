@@ -27,10 +27,12 @@ function App() {
             xl-1200:flex-row xl-1200:justify-between border-b border-neutral-700 relative">
               <StatsBar />
               <ControlBar />
+              {progress > 0 && 
               <div
                 className="absolute left-0 bottom-0 h-0.5 bg-blue-500 transition-all duration-300 shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
                 style={{ width: `${progress * 100}%` }}
-              />
+              />  
+              }
               
             </div>
           )}

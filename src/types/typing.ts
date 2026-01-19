@@ -1,3 +1,4 @@
+export type TextCategory = 'passages' | 'quotes' | 'poems' | 'lyrics' | 'speeches'
 export type Difficulty = "Easy" | "Medium" | "Hard"
 export type TimeMode =
   | "Timed (15s)"
@@ -19,6 +20,7 @@ export interface TestResult {
 }
 export interface TypingState {
   //* Settings
+  textCategory: TextCategory
   difficulty: Difficulty
   timeMode: TimeMode
 
@@ -41,6 +43,7 @@ export interface TypingState {
 
   //* Actions
   setCurrentPassage: (passage: string) => void
+  setTextCategory: (category: TextCategory) => void
   setDifficulty: (difficulty: Difficulty) => void
   setTimeMode: (mode: TimeMode) => void
   setPersonalBest: (wpm: number) => void

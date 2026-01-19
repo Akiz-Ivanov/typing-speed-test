@@ -176,7 +176,7 @@ const Results = () => {
 
         <button
           type="button"
-          className="bg-neutral-0 rounded-xl py-4 px-2.5 text-neutral-900 hover:bg-blue-400
+          className="bg-neutral-0 rounded-xl py-4 px-4 text-neutral-900 hover:bg-blue-400
         inline-flex flex-row items-center justify-center gap-2.5 cursor-pointer transition-colors duration-200"
           onClick={handleRestartTest}
         >

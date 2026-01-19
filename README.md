@@ -33,6 +33,14 @@ Users should be able to:
 
 ![Mobile screenshot](./screenshots/mobile-screenshot.png)
 
+#### Test History
+
+![Test History](./screenshots/test-history.png)
+
+#### Mobile Test Settings
+
+![Mobile Test Settings](./screenshots/mobile-settings.png)
+
 ### Links
 
 - Solution URL: [https://github.com/Akiz-Ivanov/typing-speed-test](https://github.com/Akiz-Ivanov/typing-speed-test)

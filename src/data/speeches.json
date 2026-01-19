@@ -1,0 +1,218 @@
+{
+  "easy": [
+    {
+      "id": "easy-1",
+      "text": "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.",
+      "title": "Gettysburg Address (excerpt)",
+      "speaker": "Abraham Lincoln",
+      "year": 1863
+    },
+    {
+      "id": "easy-2",
+      "text": "We shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender.",
+      "title": "We Shall Fight on the Beaches (excerpt)",
+      "speaker": "Winston Churchill",
+      "year": 1940
+    },
+    {
+      "id": "easy-3",
+      "text": "The only thing we have to fear is fear itself—nameless, unreasoning, unjustified terror which paralyzes needed efforts to convert retreat into advance.",
+      "title": "First Inaugural Address (excerpt)",
+      "speaker": "Franklin D. Roosevelt",
+      "year": 1933
+    },
+    {
+      "id": "easy-4",
+      "text": "Tear down this wall! General Secretary Gorbachev, if you seek peace, if you seek prosperity for the Soviet Union and Eastern Europe, if you seek liberalization: Come here to this gate! Mr. Gorbachev, open this gate! Mr. Gorbachev, tear down this wall!",
+      "title": "Brandenburg Gate Speech (excerpt)",
+      "speaker": "Ronald Reagan",
+      "year": 1987
+    },
+    {
+      "id": "easy-5",
+      "text": "Give me liberty, or give me death! Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!",
+      "title": "Liberty or Death Speech (excerpt)",
+      "speaker": "Patrick Henry",
+      "year": 1775
+    },
+    {
+      "id": "easy-6",
+      "text": "I came, I saw, I conquered. I have waged war against nations that threatened our Republic, and I have returned victorious. Let it be known that Rome's glory expands with each battle won, and our legions remain undefeated under my command.",
+      "title": "Zela Victory Message (expanded)",
+      "speaker": "Julius Caesar",
+      "year": "47 BC"
+    },
+    {
+      "id": "easy-7",
+      "text": "The ballot is stronger than the bullet. Let us have faith that right makes might, and in that faith, let us, to the end, dare to do our duty as we understand it. Nothing valuable can be lost by taking time to ensure our democratic processes are protected and honored by all.",
+      "title": "Cooper Union Address (excerpt)",
+      "speaker": "Abraham Lincoln",
+      "year": 1860
+    },
+    {
+      "id": "easy-8",
+      "text": "We must all hang together, or assuredly we shall all hang separately. The cause we embrace is just, our determination firm, and our commitment to liberty unshakable. United we stand against tyranny; divided we shall surely fall to oppression's heavy hand.",
+      "title": "At the Signing of the Declaration (expanded)",
+      "speaker": "Benjamin Franklin",
+      "year": 1776
+    },
+    {
+      "id": "easy-9",
+      "text": "The future doesn't belong to the fainthearted; it belongs to the brave. The Challenger crew was pulling us into the future, and we'll continue to follow them. We'll continue our quest in space. There will be more shuttle flights and more shuttle crews and, yes, more volunteers.",
+      "title": "Challenger Disaster Address (excerpt)",
+      "speaker": "Ronald Reagan",
+      "year": 1986
+    },
+    {
+      "id": "easy-10",
+      "text": "A house divided against itself cannot stand. I believe this government cannot endure, permanently half slave and half free. I do not expect the Union to be dissolved—I do not expect the house to fall—but I do expect it will cease to be divided. It will become all one thing or all the other.",
+      "title": "House Divided Speech (excerpt)",
+      "speaker": "Abraham Lincoln",
+      "year": 1858
+    }
+  ],
+  "medium": [
+    {
+      "id": "medium-1",
+      "text": "I have a dream that one day this nation will rise up and live out the true meaning of its creed: 'We hold these truths to be self-evident, that all men are created equal.' I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.",
+      "title": "I Have a Dream (excerpt)",
+      "speaker": "Martin Luther King Jr.",
+      "year": 1963
+    },
+    {
+      "id": "medium-2",
+      "text": "Ask not what your country can do for you—ask what you can do for your country. My fellow citizens of the world: ask not what America will do for you, but what together we can do for the freedom of man. Finally, whether you are citizens of America or citizens of the world, ask of us here the same high standards of strength and sacrifice which we ask of you.",
+      "title": "Inaugural Address (excerpt)",
+      "speaker": "John F. Kennedy",
+      "year": 1961
+    },
+    {
+      "id": "medium-3",
+      "text": "Yesterday, December 7th, 1941—a date which will live in infamy—the United States of America was suddenly and deliberately attacked by naval and air forces of the Empire of Japan. The United States was at peace with that nation and, at the solicitation of Japan, was still in conversation with its government and its emperor looking toward the maintenance of peace in the Pacific.",
+      "title": "Day of Infamy Speech (opening)",
+      "speaker": "Franklin D. Roosevelt",
+      "year": 1941
+    },
+    {
+      "id": "medium-4",
+      "text": "I am prepared to die for my beliefs, but I am not prepared to kill for them. Violence is not the answer. The answer lies in our ability to make positive, constructive contributions to our society. I have fought against white domination, and I have fought against black domination. I have cherished the ideal of a democratic and free society in which all persons live together in harmony.",
+      "title": "Trial Speech Excerpt",
+      "speaker": "Nelson Mandela",
+      "year": 1964
+    },
+    {
+      "id": "medium-5",
+      "text": "Friends, Romans, countrymen, lend me your ears; I come to bury Caesar, not to praise him. The evil that men do lives after them; the good is oft interred with their bones; so let it be with Caesar. The noble Brutus hath told you Caesar was ambitious: If it were so, it was a grievous fault, and grievously hath Caesar answered it.",
+      "title": "Julius Caesar Funeral Oration (excerpt)",
+      "speaker": "Mark Antony (as portrayed by Shakespeare)",
+      "year": "1599 (play)"
+    },
+    {
+      "id": "medium-6",
+      "text": "We choose to go to the moon in this decade and do the other things, not because they are easy, but because they are hard, because that goal will serve to organize and measure the best of our energies and skills, because that challenge is one that we are willing to accept, one we are unwilling to postpone, and one which we intend to win.",
+      "title": "Moon Speech (excerpt)",
+      "speaker": "John F. Kennedy",
+      "year": 1962
+    },
+    {
+      "id": "medium-7",
+      "text": "I know not what course others may take; but as for me, give me liberty or give me death! Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!",
+      "title": "Liberty or Death Speech (conclusion extended)",
+      "speaker": "Patrick Henry",
+      "year": 1775
+    },
+    {
+      "id": "medium-8",
+      "text": "Ain't I a woman? Look at me! Look at my arm! I have ploughed and planted, and gathered into barns, and no man could head me! And ain't I a woman? I could work as much and eat as much as a man—when I could get it—and bear the lash as well! And ain't I a woman? I have borne thirteen children, and seen most all sold off to slavery.",
+      "title": "Ain't I a Woman (excerpt)",
+      "speaker": "Sojourner Truth",
+      "year": 1851
+    },
+    {
+      "id": "medium-9",
+      "text": "Blood, toil, tears and sweat. We have before us an ordeal of the most grievous kind. We have before us many, many long months of struggle and of suffering. You ask, what is our policy? I will say: It is to wage war, by sea, land and air, with all our might and with all the strength that God can give us.",
+      "title": "Blood, Toil, Tears and Sweat",
+      "speaker": "Winston Churchill",
+      "year": 1940
+    },
+    {
+      "id": "medium-10",
+      "text": "The eyes of the world are upon you. The hopes and prayers of liberty-loving people everywhere march with you. I have full confidence in your courage, devotion to duty and skill in battle. We will accept nothing less than full victory! Good luck! And let us all beseech the blessing of Almighty God upon this great and noble undertaking.",
+      "title": "D-Day Order",
+      "speaker": "Dwight D. Eisenhower",
+      "year": 1944
+    }
+  ],
+  "hard": [
+    {
+      "id": "hard-1",
+      "text": "We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness. That to secure these rights, Governments are instituted among Men, deriving their just powers from the consent of the governed, That whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it, and to institute new Government, laying its foundation on such principles and organizing its powers in such form, as to them shall seem most likely to effect their Safety and Happiness.",
+      "title": "Declaration of Independence (excerpt)",
+      "speaker": "Thomas Jefferson",
+      "year": 1776
+    },
+    {
+      "id": "hard-2",
+      "text": "It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion—that we here highly resolve that these dead shall not have died in vain—that this nation, under God, shall have a new birth of freedom—and that government of the people, by the people, for the people, shall not perish from the earth.",
+      "title": "Gettysburg Address (conclusion)",
+      "speaker": "Abraham Lincoln",
+      "year": 1863
+    },
+    {
+      "id": "hard-3",
+      "text": "I know not what course others may take; but as for me, give me liberty or give me death! Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!",
+      "title": "Give Me Liberty or Give Me Death (full excerpt)",
+      "speaker": "Patrick Henry",
+      "year": 1775
+    },
+    {
+      "id": "hard-4",
+      "text": "I have been a soldier for forty years, and should I now show myself unworthy of my past? If I retreat now, I cannot call myself Alexander. What would the world say of me? No, I will not retreat. We will cross this river and show these barbarians what it means to face Macedonian steel! Remember the victories at Granicus, at Issus, at Gaugamela! Remember that we are the conquerors of Persia, the masters of Asia! Forward, my companions! Forward to glory!",
+      "title": "Address at the Hydaspes River",
+      "speaker": "Alexander the Great",
+      "year": "326 BC"
+    },
+    {
+      "id": "hard-5",
+      "text": "I shall begin by speaking about our ancestors, since it is right and proper on such an occasion to pay them the honor of recall. They dwelt in this land without break in succession from generation to generation, and they have handed it down to us free by their exertions. If we turn to our military and naval achievements and the innumerable efforts we have made to protect ourselves and our allies, why should we weep for men who have died for their country? For myself, I would have you day by day fix your eyes upon the greatness of Athens, until you become filled with the love of her.",
+      "title": "Funeral Oration (excerpt)",
+      "speaker": "Pericles",
+      "year": "431 BC"
+    },
+    {
+      "id": "hard-6",
+      "text": "What, to the American slave, is your Fourth of July? I answer: a day that reveals to him, more than all other days in the year, the gross injustice and cruelty to which he is the constant victim. To him, your celebration is a sham; your boasted liberty, an unholy license; your national greatness, swelling vanity; your sounds of rejoicing are empty and heartless; your denunciation of tyrants, brass fronted impudence; your shouts of liberty and equality, hollow mockery; your prayers and hymns, your sermons and thanksgivings, with all your religious parade and solemnity, are, to him, mere bombast, fraud, deception, impiety, and hypocrisy—a thin veil to cover up crimes which would disgrace a nation of savages.",
+      "title": "What to the Slave Is the Fourth of July? (excerpt)",
+      "speaker": "Frederick Douglass",
+      "year": 1852
+    },
+    {
+      "id": "hard-7",
+      "text": "Let every nation know, whether it wishes us well or ill, that we shall pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, to assure the survival and the success of liberty. This much we pledge—and more. To those old allies whose cultural and spiritual origins we share, we pledge the loyalty of faithful friends. United, there is little we cannot do in a host of cooperative ventures. Divided, there is little we can do—for we dare not meet a powerful challenge at odds and split asunder.",
+      "title": "Inaugural Address (extended excerpt)",
+      "speaker": "John F. Kennedy",
+      "year": 1961
+    },
+    {
+      "id": "hard-8",
+      "text": "I wish to preach, not the doctrine of ignoble ease, but the doctrine of the strenuous life, the life of toil and effort, of labor and strife; to preach that highest form of success which comes, not to the man who desires mere easy peace, but to the man who does not shrink from danger, from hardship, or from bitter toil, and who out of these wins the splendid ultimate triumph. A life of slothful ease, a life of that peace which springs merely from lack either of desire or of power to strive after great things, is as little worthy of a nation as of an individual.",
+      "title": "The Strenuous Life",
+      "speaker": "Theodore Roosevelt",
+      "year": 1899
+    },
+    {
+      "id": "hard-9",
+      "text": "I see in the near future a crisis approaching that unnerves me and causes me to tremble for the safety of my country. Corporations have been enthroned and an era of corruption in high places will follow, and the money power of the country will endeavor to prolong its reign by working upon the prejudices of the people until all wealth is aggregated in a few hands and the Republic is destroyed. I feel at this moment more anxiety for the safety of my country than ever before, even in the midst of war.",
+      "title": "Letter to Col. William F. Elkins",
+      "speaker": "Abraham Lincoln",
+      "year": 1864
+    },
+    {
+      "id": "hard-10",
+      "text": "The power under the Constitution will always be in the people. It is entrusted for certain defined purposes, and for a certain limited period, to representatives of their own choosing; and whenever it is executed contrary to their interest, or not agreeable to their wishes, their servants can, and undoubtedly will, be recalled. It is your right to possess arms for your own defense, not as a matter of privilege but as a sacred right essential to the preservation of liberty.",
+      "title": "Virginia Ratifying Convention (excerpt)",
+      "speaker": "Patrick Henry",
+      "year": 1788
+    }
+  ]
+}

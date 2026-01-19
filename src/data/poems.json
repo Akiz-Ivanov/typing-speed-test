@@ -1,0 +1,188 @@
+{
+  "easy": [
+    {
+      "id": "easy-1",
+      "text": "The fog comes on little cat feet. It sits looking over harbor and city on silent haunches and then moves on.",
+      "title": "Fog",
+      "author": "Carl Sandburg"
+    },
+    {
+      "id": "easy-2",
+      "text": "so much depends upon a red wheel barrow glazed with rain water beside the white chickens.",
+      "title": "The Red Wheelbarrow",
+      "author": "William Carlos Williams"
+    },
+    {
+      "id": "easy-3",
+      "text": "I'm nobody! Who are you? Are you nobody, too? Then there's a pair of us - don't tell! They'd banish us, you know.",
+      "title": "I'm Nobody! Who are You?",
+      "author": "Emily Dickinson"
+    },
+    {
+      "id": "easy-4",
+      "text": "Hope is the thing with feathers that perches in the soul, and sings the tune without the words, and never stops at all.",
+      "title": "Hope is the Thing with Feathers",
+      "author": "Emily Dickinson"
+    },
+    {
+      "id": "easy-5",
+      "text": "An old silent pond. A frog jumps into the pond— splash! Silence again.",
+      "title": "The Old Pond",
+      "author": "Matsuo Bashō"
+    },
+    {
+      "id": "easy-6",
+      "text": "I have eaten the plums that were in the icebox and which you were probably saving for breakfast. Forgive me they were delicious so sweet and so cold.",
+      "title": "This Is Just To Say",
+      "author": "William Carlos Williams"
+    },
+    {
+      "id": "easy-7",
+      "text": "In a Station of the Metro: The apparition of these faces in the crowd; Petals on a wet, black bough.",
+      "title": "In a Station of the Metro",
+      "author": "Ezra Pound"
+    },
+    {
+      "id": "easy-8",
+      "text": "The rose is a rose, and was always a rose. But the theory now goes that the apple's a rose, and the pear is, and so's the plum, I suppose.",
+      "title": "The Rose Family",
+      "author": "Robert Frost"
+    },
+    {
+      "id": "easy-9",
+      "text": "April is the cruelest month, breeding lilacs out of the dead land, mixing memory and desire, stirring dull roots with spring rain.",
+      "title": "The Waste Land (excerpt)",
+      "author": "T.S. Eliot"
+    },
+    {
+      "id": "easy-10",
+      "text": "A thing of beauty is a joy for ever: its loveliness increases; it will never pass into nothingness; but still will keep a bower quiet for us.",
+      "title": "Endymion (excerpt)",
+      "author": "John Keats"
+    }
+  ],
+  "medium": [
+    {
+      "id": "medium-1",
+      "text": "Two roads diverged in a yellow wood, and sorry I could not travel both and be one traveler, long I stood and looked down one as far as I could to where it bent in the undergrowth.",
+      "title": "The Road Not Taken (excerpt)",
+      "author": "Robert Frost"
+    },
+    {
+      "id": "medium-2",
+      "text": "I wandered lonely as a cloud that floats on high o'er vales and hills, when all at once I saw a crowd, a host, of golden daffodils; beside the lake, beneath the trees, fluttering and dancing in the breeze.",
+      "title": "Daffodils (excerpt)",
+      "author": "William Wordsworth"
+    },
+    {
+      "id": "medium-3",
+      "text": "Shall I compare thee to a summer's day? Thou art more lovely and more temperate: rough winds do shake the darling buds of May, and summer's lease hath all too short a date.",
+      "title": "Sonnet 18",
+      "author": "William Shakespeare"
+    },
+    {
+      "id": "medium-4",
+      "text": "Because I could not stop for Death, he kindly stopped for me; the carriage held but just ourselves and immortality. We slowly drove, he knew no haste, and I had put away my labor and my leisure too, for his civility.",
+      "title": "Because I could not stop for Death",
+      "author": "Emily Dickinson"
+    },
+    {
+      "id": "medium-5",
+      "text": "O Captain! my Captain! our fearful trip is done, the ship has weather'd every rack, the prize we sought is won, the port is near, the bells I hear, the people all exulting, while follow eyes the steady keel, the vessel grim and daring.",
+      "title": "O Captain! My Captain!",
+      "author": "Walt Whitman"
+    },
+    {
+      "id": "medium-6",
+      "text": "Tyger Tyger, burning bright, in the forests of the night; what immortal hand or eye, could frame thy fearful symmetry? In what distant deeps or skies burnt the fire of thine eyes? On what wings dare he aspire? What the hand, dare seize the fire?",
+      "title": "The Tyger",
+      "author": "William Blake"
+    },
+    {
+      "id": "medium-7",
+      "text": "Let us go then, you and I, when the evening is spread out against the sky like a patient etherized upon a table; let us go, through certain half-deserted streets, the muttering retreats of restless nights in one-night cheap hotels.",
+      "title": "The Love Song of J. Alfred Prufrock (excerpt)",
+      "author": "T.S. Eliot"
+    },
+    {
+      "id": "medium-8",
+      "text": "I think that I shall never see a poem lovely as a tree. A tree whose hungry mouth is prest against the earth's sweet flowing breast; a tree that looks at God all day, and lifts her leafy arms to pray.",
+      "title": "Trees",
+      "author": "Joyce Kilmer"
+    },
+    {
+      "id": "medium-9",
+      "text": "Stop all the clocks, cut off the telephone, prevent the dog from barking with a juicy bone, silence the pianos and with muffled drum bring out the coffin, let the mourners come.",
+      "title": "Funeral Blues",
+      "author": "W.H. Auden"
+    },
+    {
+      "id": "medium-10",
+      "text": "I know why the caged bird sings, ah me, when his wing is bruised and his bosom sore, when he beats his bars and he would be free; it is not a carol of joy or glee, but a prayer that he sends from his heart's deep core.",
+      "title": "Sympathy",
+      "author": "Paul Laurence Dunbar"
+    }
+  ],
+  "hard": [
+    {
+      "id": "hard-1",
+      "text": "Do not go gentle into that good night, old age should burn and rave at close of day; rage, rage against the dying of the light. Though wise men at their end know dark is right, because their words had forked no lightning they do not go gentle into that good night.",
+      "title": "Do Not Go Gentle Into That Good Night",
+      "author": "Dylan Thomas"
+    },
+    {
+      "id": "hard-2",
+      "text": "The sea is calm tonight. The tide is full, the moon lies fair upon the straits; on the French coast the light gleams and is gone; the cliffs of England stand, glimmering and vast, out in the tranquil bay. Come to the window, sweet is the night-air!",
+      "title": "Dover Beach (excerpt)",
+      "author": "Matthew Arnold"
+    },
+    {
+      "id": "hard-3",
+      "text": "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore— while I nodded, nearly napping, suddenly there came a tapping, as of some one gently rapping, rapping at my chamber door.",
+      "title": "The Raven (excerpt)",
+      "author": "Edgar Allan Poe"
+    },
+    {
+      "id": "hard-4",
+      "text": "Turning and turning in the widening gyre the falcon cannot hear the falconer; things fall apart; the centre cannot hold; mere anarchy is loosed upon the world, the blood-dimmed tide is loosed, and everywhere the ceremony of innocence is drowned.",
+      "title": "The Second Coming (excerpt)",
+      "author": "William Butler Yeats"
+    },
+    {
+      "id": "hard-5",
+      "text": "Season of mists and mellow fruitfulness, close bosom-friend of the maturing sun; conspiring with him how to load and bless with fruit the vines that round the thatch-eves run; to bend with apples the moss'd cottage-trees, and fill all fruit with ripeness to the core.",
+      "title": "To Autumn",
+      "author": "John Keats"
+    },
+    {
+      "id": "hard-6",
+      "text": "Shall I sonnet-sing you about myself? Do I live in a house you would like to see? Is it scant of gear, has it store of pelf? Unlock my heart with a sonnet-key. Invite the world, as my betters have done? Take notice: this building remains to be let.",
+      "title": "House",
+      "author": "Christina Rossetti"
+    },
+    {
+      "id": "hard-7",
+      "text": "What happens to a dream deferred? Does it dry up like a raisin in the sun? Or fester like a sore— and then run? Does it stink like rotten meat? Or crust and sugar over— like a syrupy sweet? Maybe it just sags like a heavy load. Or does it explode?",
+      "title": "Harlem",
+      "author": "Langston Hughes"
+    },
+    {
+      "id": "hard-8",
+      "text": "I celebrate myself, and sing myself, and what I assume you shall assume, for every atom belonging to me as good belongs to you. I loafe and invite my soul, I lean and loafe at my ease observing a spear of summer grass.",
+      "title": "Song of Myself (excerpt)",
+      "author": "Walt Whitman"
+    },
+    {
+      "id": "hard-9",
+      "text": "Much have I travell'd in the realms of gold, and many goodly states and kingdoms seen; round many western islands have I been which bards in fealty to Apollo hold. Off of one wide expanse had I been told that deep-brow'd Homer ruled as his demesne.",
+      "title": "On First Looking into Chapman's Homer",
+      "author": "John Keats"
+    },
+    {
+      "id": "hard-10",
+      "text": "My heart aches, and a drowsy numbness pains my sense, as though of hemlock I had drunk, or emptied some dull opiate to the drains one minute past, and Lethe-wards had sunk: 'tis not through envy of thy happy lot, but being too happy in thine happiness.",
+      "title": "Ode to a Nightingale (excerpt)",
+      "author": "John Keats"
+    }
+  ]
+}
