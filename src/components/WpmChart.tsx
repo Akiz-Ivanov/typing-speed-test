@@ -1,5 +1,6 @@
 import type { TestResult } from '@/types/typing'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
+import { ResponsiveContainer } from 'recharts'
 
 const WpmChart = ({ history }: { history: TestResult[] }) => {
   if (history.length < 2) {

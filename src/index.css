@@ -220,3 +220,11 @@
     scrollbar-color: hsl(var(--neutral-700)) hsl(var(--neutral-900));
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
