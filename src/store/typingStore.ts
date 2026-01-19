@@ -52,8 +52,8 @@ export const useTypingStore = create<TypingState>()(
         const state = get()
         const timeLimit = parseTimeFromTimeMode(state.timeMode)
 
-        //* For Passage mode: start at 0, will count up
-        //* For Timed mode: start at the time limit, will count down
+        //* For Passage mode: start at 0, count up
+        //* For Timed mode: start at the time limit, count down
         const initialElapsedTime = timeLimit === null ? 0 : timeLimit
 
         set({
@@ -68,7 +68,6 @@ export const useTypingStore = create<TypingState>()(
           accuracy: 100
         })
 
-        //* Always start timer for both modes
         state.startTimer()
       },
 
@@ -131,7 +130,7 @@ export const useTypingStore = create<TypingState>()(
         //* Update stats
         state.updateStats()
 
-        //* Check completion with new index
+        //* Check completion
         if (newIndex >= state.currentPassage.length) {
           state.completeTest()
         }
@@ -193,7 +192,7 @@ export const useTypingStore = create<TypingState>()(
         const elapsedSeconds = (now - state.startTime) / 1000
 
         //* For Passage mode: use elapsed time directly
-        //* For Timed mode: use time elapsed (which is timeLimit - elapsedTime)
+        //* For Timed mode: use time elapsed (timeLimit - elapsedTime)
         const timeLimit = parseTimeFromTimeMode(state.timeMode)
         const timeForWpm = timeLimit === null
           ? elapsedSeconds  //* Passage: elapsed time

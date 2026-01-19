@@ -1,8 +1,6 @@
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -28,7 +26,7 @@ const HistoryDialog = () => {
           <span className="hidden lg:block">View History</span>
         </button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-center">Test History</DialogTitle>
         </DialogHeader>

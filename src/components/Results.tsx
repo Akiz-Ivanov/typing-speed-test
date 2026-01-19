@@ -7,6 +7,7 @@ import newPB from "@/assets/images/icon-new-pb.svg"
 import { cn } from "@/lib/utils"
 import { useTypingStore } from "@/store/typingStore"
 import SharePopover from "./SharePopover"
+import AssistiveTechInfo from "./AssistiveTechInfo"
 
 const Results = () => {
 
@@ -90,6 +91,17 @@ const Results = () => {
       "gap-6 md:gap-8",
     )}
     >
+      <AssistiveTechInfo
+        message={
+          resultStatus === "first-test"
+            ? `First test complete! ${wpm} words per minute, ${accuracy}% accuracy. Baseline established.`
+            : resultStatus === "personal-best"
+            ? `New personal best! ${wpm} words per minute, ${accuracy}% accuracy. Congratulations!`
+            : `Test complete. ${wpm} words per minute, ${accuracy}% accuracy.`
+        }
+        type="assertive"
+        debounceMs={0} //* Announce immediately when results show
+      />
 
       {(resultStatus === "first-test" || resultStatus === "default") && (
         <>

@@ -4,6 +4,7 @@ import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
 import { useTypingStore } from "@/store/typingStore"
 import useScrollToCurrentChar from "@/hooks/useScrollToCurrentChar"
+import AssistiveTechInfo from "./AssistiveTechInfo"
 
 const TypingArea = () => {
 
@@ -13,6 +14,10 @@ const TypingArea = () => {
     difficulty,
     currentIndex,
     userInput,
+    timeMode,
+    wpm,
+    accuracy,
+    elapsedTime,
     generateRandomPassage,
     restartTest,
     handleKeyPress,
@@ -63,6 +68,12 @@ const TypingArea = () => {
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      //* Escape to restart test
+      if (e.key === "Escape" && status === "active") {
+        e.preventDefault()
+        restartTest()
+        return
+      }
       //* Ignore modifier keys, function keys, etc.
       if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
         if (status === "idle") {
@@ -79,7 +90,7 @@ const TypingArea = () => {
     return () => {
       window.removeEventListener("keydown", handleGlobalKeyDown)
     }
-  }, [status, startTest])
+  }, [status])
 
   const handleRestartClick = () => {
     restartTest()
@@ -94,7 +105,6 @@ const TypingArea = () => {
     <div>
       <div className="typing-area pb-8 md:pb-10 xl-1200:pb-16">
         <div className="relative">
-
           <input
             ref={inputRef}
             type="text"
@@ -148,7 +158,8 @@ const TypingArea = () => {
 
           <p className={cn(
             "typing-area-text text-[2rem] md:text-[2.5rem] text-neutral-400 transition-all",
-            isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden"
+            isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden",
+            isActive && "max-h-[70vh] sm:max-h-none overflow-y-auto md:overflow-y-clip"
           )}
           >
             {currentPassage.split('').map((char, i) => (
@@ -185,7 +196,7 @@ const TypingArea = () => {
             onClick={handleRestartClick}
           >
             Restart Test
-            <img src={iconRestart} alt="" />
+            <img src={iconRestart} alt="" aria-hidden />
           </button>
 
           <button
@@ -201,6 +212,33 @@ const TypingArea = () => {
 
         </div>
       }
+
+      <AssistiveTechInfo
+        message={
+          status === "idle"
+            ? `Typing test ready. Press any letter to start. ${difficulty} difficulty, ${timeMode} mode.`
+            : status === "active"
+              ? `${currentIndex} of ${currentPassage.length} characters. ${wpm} WPM, ${accuracy}% accuracy.${timeMode !== "Passage" ? ` ${elapsedTime} seconds remaining.` : ""
+              }`
+              : ""
+        }
+        type="polite"
+        debounceMs={status === "active" ? 1500 : 500} //* Less frequent during typing
+      />
+
+      {/* Instructions for screen readers */}
+      <div className="sr-only" aria-live="polite">
+        <h2>Typing Test</h2>
+        <p>Difficulty: {difficulty}. Mode: {timeMode}.</p>
+        <p>Correct characters appear in green, errors in red with underline.</p>
+        <p>Current character has light blue background.</p>
+        {isActive && (
+          <p>
+            Current character: "{currentPassage[currentIndex]}".
+            Position {currentIndex + 1} of {currentPassage.length}.
+          </p>
+        )}
+      </div>
     </div>
   )
 }

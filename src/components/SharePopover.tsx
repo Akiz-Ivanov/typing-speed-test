@@ -98,7 +98,6 @@ const SharePopover = ({ wpm, accuracy }: Props) => {
           group cursor-pointer"
         >
           <FiShare2 className="size-6 transition-transform duration-300 ease-in-out group-hover:rotate-180" />
-          {/* Subtle glow effect */}
           <div className="absolute inset-0 rounded-full bg-blue-500/0 group-hover:bg-blue-500/40 blur-md transition-all duration-300 -z-10" />
         </button>
       </PopoverTrigger>

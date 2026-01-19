@@ -1,7 +1,6 @@
 import { useTypingStore } from "@/store/typingStore";
 import { format } from "date-fns"; 
 import { Trash2 } from "lucide-react";
-// or use native toLocaleDateString
 
 const HistoryPanel = () => {
   const { testHistory, clearHistory } = useTypingStore()
@@ -65,8 +64,8 @@ const HistoryPanel = () => {
         >
           <div className="flex justify-between">
             <div>
-              <span className="font-bold text-lg">{test.wpm} WPM</span>
-              <span className={`ml-3 font-medium ${getAccuracyColor(test.accuracy)}`}>
+              <span className="font-bold text-sm md:text-lg">{test.wpm} WPM</span>
+              <span className={`ml-3 text-sm sm:text-base font-medium ${getAccuracyColor(test.accuracy)}`}>
                 {test.accuracy}%
               </span>
             </div>
@@ -74,17 +73,17 @@ const HistoryPanel = () => {
               <div className="text-neutral-300">
                 {formatDate(test.date)}
               </div>
-              <div className="text-neutral-400 text-base">
+              <div className="text-neutral-400 text-sm md:text-base">
                 <span className={`${getDifficultyColor(test.difficulty)}`}>{test.difficulty}</span> • <span className="text-blue-400">{test.timeMode}</span>
               </div>
             </div>
           </div>
           <div className="flex gap-4 text-sm mt-2">
             <span className="text-green-500">
-              ✓ {test.correctChars} correct
+              ✓ {test.correctChars} <span className="hidden sm:inline">correct chars</span>
             </span>
             <span className="text-red-500">
-              ✗ {test.incorrectChars} errors
+              ✗ {test.incorrectChars} <span className="hidden sm:inline">errors</span>
             </span>
           </div>
         </div>
