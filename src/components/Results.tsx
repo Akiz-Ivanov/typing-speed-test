@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { useTypingStore } from "@/store/typingStore"
 import SharePopover from "./SharePopover"
 import AssistiveTechInfo from "./AssistiveTechInfo"
+import SaveToLeaderboard from "./SaveToLeaderboard"
 
 const Results = () => {
 
@@ -84,6 +85,9 @@ const Results = () => {
     accuracy === 100 ? "text-green-400" :
       accuracy >= 80 ? "text-yellow-400"
         : "text-red-500"
+
+  //* Show save to leaderboard only for valid scores (first-test or personal-best with WPM > 0)
+  const showSaveToLeaderboard = (resultStatus === "first-test" || resultStatus === "personal-best") && wpm > 0
 
   return (
     <div className={cn(
@@ -169,6 +173,10 @@ const Results = () => {
           </dd>
         </div>
       </dl>
+
+      {showSaveToLeaderboard && (
+        <SaveToLeaderboard wpm={wpm} accuracy={accuracy} />
+      )}
 
       <div className="flex justify-center items-center gap-2.5">
 

@@ -1,4 +1,3 @@
-// services/dataService.ts
 import passages from '@/data/passages.json'
 import quotes from '@/data/quotes.json'
 import poems from '@/data/poems.json'
@@ -6,7 +5,6 @@ import lyrics from '@/data/lyrics.json'
 import speeches from '@/data/speeches.json'
 import type { TextCategory, Difficulty } from '@/types/typing'
 
-// Define data structure types
 interface TextItem {
   id: string
   text: string

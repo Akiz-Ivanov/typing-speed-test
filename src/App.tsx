@@ -4,6 +4,7 @@ import StatsBar from "@/components/StatsBar"
 import TypingArea from "./components/TypingArea"
 import Results from "./components/Results"
 import { useTypingStore } from "./store/typingStore"
+import SaveToLeaderboard from "./components/SaveToLeaderboard"
 
 function App() {
 
@@ -33,7 +34,6 @@ function App() {
                 style={{ width: `${progress * 100}%` }}
               />  
               }
-              
             </div>
           )}
           {!isTestOver && <TypingArea />}

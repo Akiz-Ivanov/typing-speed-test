@@ -25,12 +25,14 @@ export const useTypingStore = create<TypingState>()(
       personalBest: 0,
       resultStatus: "first-test",
       testHistory: [],
+      nickname: null,
 
       setCurrentPassage: (passage) => set({ currentPassage: passage }),
       setTextCategory: (textCategory) => set({ textCategory }),
       setDifficulty: (difficulty) => set({ difficulty }),
       setTimeMode: (timeMode) => set({ timeMode }),
       setPersonalBest: (wpm) => set({ personalBest: wpm }),
+      setNickname: (nickname) => set({ nickname }),
 
       addToHistory: (result: Omit<TestResult, 'id' | 'date'>) => set((state) => {
         const newEntry: TestResult = {
@@ -293,6 +295,7 @@ export const useTypingStore = create<TypingState>()(
         difficulty: state.difficulty,
         timeMode: state.timeMode,
         testHistory: state.testHistory,
+        nickname: state.nickname
       }),
     }
   )

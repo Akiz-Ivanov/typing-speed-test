@@ -19,6 +19,8 @@ export interface TestResult {
   incorrectChars: number;
 }
 export interface TypingState {
+  nickname: string | null
+
   //* Settings
   textCategory: TextCategory
   difficulty: Difficulty
@@ -47,6 +49,8 @@ export interface TypingState {
   setDifficulty: (difficulty: Difficulty) => void
   setTimeMode: (mode: TimeMode) => void
   setPersonalBest: (wpm: number) => void
+  setNickname: (nickname: string) => void
+  
   startTest: () => void
   generateRandomPassage: () => void
   handleKeyPress: (key: string) => void

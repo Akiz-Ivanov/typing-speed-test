@@ -99,13 +99,13 @@ I implemented:
 
 Planned improvements:
 
-#### Leaderboards
+#### Leaderboards (Currently Work In Progress)
 - Backend integration
 - Optional user nickname for entry
 - Rankings
 
 #### Better passages
-- Categories (literature, tech, casual)
+- Categories
 - API-powered content
 
 #### UX ENHANCEMENTS

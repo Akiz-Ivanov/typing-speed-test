@@ -183,7 +183,7 @@ const ControlBar = () => {
                   items-center justify-center gap-2"
               >
                 <Settings className="w-5 h-5" />
-                <span>Test Configuration</span>
+                <span>Test Customization</span>
               </button>
             </DialogTrigger>
 
