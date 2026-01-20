@@ -73,7 +73,7 @@ const ControlBar = () => {
                 className="flex justify-center items-center gap-2.5 border
                   border-border bg-neutral-800 rounded-lg px-4 py-4 text-neutral-0 
                   hover:border-blue-400 hover:text-blue-400 focus-visible:border-blue-600 focus-visible:ring-2 
-                  focus-visible:ring-blue-600/50 text-center h-8 min-w-8 cursor-pointer 
+                  focus-visible:ring-blue-600/50 text-center h-8 min-w-30 cursor-pointer 
                   transition-[color,box-shadow] duration-200">
                 {formatCategory(textCategory)}
 
@@ -109,7 +109,7 @@ const ControlBar = () => {
                 className="flex justify-center items-center gap-2.5 border
                   border-border bg-neutral-800 rounded-lg px-4 py-4 text-neutral-0 
                   hover:border-blue-400 hover:text-blue-400 focus-visible:border-blue-600 focus-visible:ring-2 
-                  focus-visible:ring-blue-600/50 text-center h-8 min-w-8 cursor-pointer 
+                  focus-visible:ring-blue-600/50 text-center h-8 min-w-25 cursor-pointer 
                   transition-[color,box-shadow] duration-200">
                 {difficulty}
                 <img src={arrowDown} className="w-2.5 text-neutral-400 md:hidden" />
@@ -145,7 +145,7 @@ const ControlBar = () => {
                 className="flex justify-center items-center gap-2.5 border
                   border-border bg-neutral-800 rounded-lg px-4 py-4 text-neutral-0 
                   hover:border-blue-400 hover:text-blue-400 focus-visible:border-blue-600 focus-visible:ring-2 
-                  focus-visible:ring-blue-600/50 text-center h-8 min-w-8 cursor-pointer 
+                  focus-visible:ring-blue-600/50 text-center h-8 min-w-34 cursor-pointer 
                   transition-[color,box-shadow] duration-200 whitespace-nowrap">
                 {timeMode}
                 <img src={arrowDown} className="w-2.5 text-neutral-400 md:hidden" />

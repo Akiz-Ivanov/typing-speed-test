@@ -68,7 +68,7 @@ Users should be able to:
 I learned how to:
 - Structure stores with TypeScript
 - Handle derived state
-- Persist only important data
+- Persist data
 
 #### Real-time input handling
 
