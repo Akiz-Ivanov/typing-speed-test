@@ -2,8 +2,8 @@ import logoSmall from "@/assets/images/logo-small.svg"
 import logoLarge from "@/assets/images/logo-large.svg"
 import personalBestSvg from "@/assets/images/icon-personal-best.svg"
 import { useTypingStore } from "@/store/typingStore"
-import HistoryDialog from "./HistoryDialog"
-import LeaderboardDialog from "./LeaderboardDialog"
+import HistoryDialog from "../history/HistoryDialog"
+import LeaderboardDialog from "../leaderboard/LeaderboardDialog"
 
 const Header = () => {
 

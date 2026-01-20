@@ -1,8 +1,8 @@
-import ControlBar from "@/components/ControlBar"
-import Header from "@/components/Header"
-import StatsBar from "@/components/StatsBar"
-import TypingArea from "./components/TypingArea"
-import Results from "./components/Results"
+import ControlBar from "@/components/typing/ControlBar"
+import Header from "@/components/layout/Header"
+import StatsBar from "@/components/typing/StatsBar"
+import TypingArea from "./components/typing/TypingArea"
+import Results from "@/components/results/Results"
 import { useTypingStore } from "./store/typingStore"
 
 function App() {

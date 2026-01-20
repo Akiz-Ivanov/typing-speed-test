@@ -4,7 +4,7 @@ import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
 import { useTypingStore } from "@/store/typingStore"
 import useScrollToCurrentChar from "@/hooks/useScrollToCurrentChar"
-import AssistiveTechInfo from "./AssistiveTechInfo"
+import AssistiveTechInfo from "../common/AssistiveTechInfo"
 
 const TypingArea = () => {
 

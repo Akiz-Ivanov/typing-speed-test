@@ -6,9 +6,9 @@ import patternStar2 from "@/assets/images/pattern-star-1.svg"
 import newPB from "@/assets/images/icon-new-pb.svg"
 import { cn } from "@/lib/utils"
 import { useTypingStore } from "@/store/typingStore"
-import SharePopover from "./SharePopover"
-import AssistiveTechInfo from "./AssistiveTechInfo"
-import SaveToLeaderboard from "./SaveToLeaderboard"
+import SharePopover from "@/components/results/SharePopover"
+import AssistiveTechInfo from "@/components/common/AssistiveTechInfo"
+import SaveToLeaderboard from "@/components/leaderboard/SaveToLeaderboard"
 
 const Results = () => {
 
