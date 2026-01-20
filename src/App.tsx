@@ -4,7 +4,6 @@ import StatsBar from "@/components/StatsBar"
 import TypingArea from "./components/TypingArea"
 import Results from "./components/Results"
 import { useTypingStore } from "./store/typingStore"
-import SaveToLeaderboard from "./components/SaveToLeaderboard"
 
 function App() {
 
