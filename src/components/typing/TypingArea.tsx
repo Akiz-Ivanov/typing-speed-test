@@ -228,12 +228,10 @@ const TypingArea = () => {
 
       <AssistiveTechInfo
         message={
-          status === "idle"
-            ? `Typing test ready. Press any letter to start. ${difficulty} difficulty, ${timeMode} mode.`
+          status === "idle" ? `Typing test ready. Press any letter to start. ${difficulty} difficulty, ${timeMode} mode.`
             : status === "active"
-              ? `${currentIndex} of ${currentPassage.length} characters. ${wpm} WPM, ${accuracy}% accuracy.${timeMode !== "Passage" ? ` ${elapsedTime} seconds remaining.` : ""
-              }`
-              : ""
+            ? `${currentIndex} of ${currentPassage.length} characters. ${wpm} WPM, ${accuracy}% accuracy.${timeMode !== "Passage" ? ` ${elapsedTime} seconds remaining.` : ""}`
+            : ""
         }
         type="polite"
         debounceMs={status === "active" ? 1500 : 500} //* Less frequent during typing

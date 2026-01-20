@@ -20,10 +20,12 @@ export const submitScore = async (params: SubmitScoreParams) => {
 
   const { data, error } = await supabase
     .from('leaderboard')
-    .insert({
+    .upsert({
       nickname: nickname.trim(),
       wpm,
       accuracy,
+    }, {
+      onConflict: 'nickname'  // This tells Supabase what to do when nickname already exists
     })
     .select()
     .single()

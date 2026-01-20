@@ -31,7 +31,7 @@ const Header = () => {
 
       {/* Personal Best on right */}
       <div className="flex items-center gap-4">
-        {/* Mobile buttons */}
+        {/* Mobile buttons next to PB */}
         <div className="flex gap-3 md:hidden">
           <HistoryDialog />
           <LeaderboardDialog />
