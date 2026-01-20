@@ -85,17 +85,17 @@ I implemented:
 
 #### Backend integration with Supabase
 
-First-time Supabase implementation for:
+- First-time Supabase implementation for:
 
-Creating a PostgreSQL database
+- Creating a PostgreSQL database
 
-Implementing UPSERT operations for one-entry-per-user leaderboards
+- Implementing UPSERT operations for one-entry-per-user leaderboards
 
-Setting up Row Level Security (RLS) policies for safe public access
+- Setting up Row Level Security (RLS) policies for safe public access
 
-Handling unique constraint violations and database conflicts
+- Handling unique constraint violations and database conflicts
 
-Real-time subscriptions for live leaderboard updates
+- Real-time subscriptions for live leaderboard updates
 
 #### Mobile UX
 
