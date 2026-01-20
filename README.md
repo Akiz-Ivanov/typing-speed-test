@@ -83,6 +83,20 @@ I implemented:
 - Count-down timers for timed modes
 - Count-up timers for passage mode
 
+#### Backend integration with Supabase
+
+First-time Supabase implementation for:
+
+Creating a PostgreSQL database
+
+Implementing UPSERT operations for one-entry-per-user leaderboards
+
+Setting up Row Level Security (RLS) policies for safe public access
+
+Handling unique constraint violations and database conflicts
+
+Real-time subscriptions for live leaderboard updates
+
 #### Mobile UX
 
 - Virtual keyboard behavior
@@ -100,12 +114,14 @@ I implemented:
 Planned improvements:
 
 #### Leaderboards (Currently Work In Progress)
-- Backend integration
-- Optional user nickname for entry
-- Rankings
+- ✓ Backend integration with Supabase
+- ✓ Optional user nickname for entry
+- ✓ One-entry-per-user with auto-updating personal bests
+- ✓ Real-time updates
+- Enhanced UI Leaderboard (in progress)
 
 #### Better passages
-- Categories
+- ✓ Categories
 - API-powered content
 
 #### UX ENHANCEMENTS
