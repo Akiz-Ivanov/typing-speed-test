@@ -74,6 +74,7 @@
   --font-family-sora: 'Sora', sans-serif;
 
   --breakpoint-xl-1200: 75rem;
+  --spacing-32-64: clamp(2rem, 0.8444rem + 4.9307vw, 4rem);
 
   --text-16-20: clamp(1rem, 0.7615rem + 1.0178vw, 1.25rem);
 

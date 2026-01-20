@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
@@ -29,6 +29,7 @@ const TypingArea = () => {
   const isIdle = status === "idle"
 
   const inputRef = useRef<HTMLInputElement>(null)
+  const [isInputFocused, setIsInputFocused] = useState(false)
 
   useScrollToCurrentChar()
 
@@ -106,6 +107,14 @@ const TypingArea = () => {
       <div className="typing-area pb-8 md:pb-10 xl-1200:pb-16">
         <div className="relative">
 
+          {isActive && !isInputFocused && (
+            <span 
+              className="absolute -top-3 text-gray-600/70 -translate-1/2 left-1/2 text-nowrap"
+            >
+              Select text to continue typing
+            </span>
+          )}
+
           <input
             ref={inputRef}
             type="text"
@@ -113,6 +122,8 @@ const TypingArea = () => {
             autoCapitalize="off"
             autoCorrect="off"
             spellCheck={false}
+            onFocus={() => setIsInputFocused(true)}
+            onBlur={() => setIsInputFocused(false)}
             className="absolute inset-0 opacity-0 cursor-pointer"
             value={userInput}
             disabled={!isActive}
@@ -160,7 +171,8 @@ const TypingArea = () => {
           <p className={cn(
             "typing-area-text text-[2rem] md:text-[2.5rem] text-neutral-400 transition-all",
             isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden",
-            isActive && "max-h-[70vh] sm:max-h-none overflow-y-auto md:overflow-y-clip"
+            isActive && "max-h-[70vh] sm:max-h-none overflow-y-auto md:overflow-y-clip",
+            isActive && !isInputFocused && "text-blue-300/90"
           )}
           >
             {currentPassage.split('').map((char, i) => (

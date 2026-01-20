@@ -10,7 +10,7 @@ const Header = () => {
   const { personalBest } = useTypingStore((state) => state)
 
   return (
-    <header className="w-full mb-8 flex justify-between items-center">
+    <header className="w-full mb-32-64 flex justify-between items-center">
 
       <div className="flex items-center gap-6">
         <h1>

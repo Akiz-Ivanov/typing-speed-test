@@ -16,29 +16,31 @@ function App() {
   const isTestOver = status === "complete"
 
   return (
-    <div className="p-4 sm:p-6 md:px-8 mx-auto max-w-304">
-      <Header />
-      <main>
-        <div className="flex flex-col gap-8">
+    <div className="p-4 sm:p-6 md:p-8">
+      <div className="mx-auto max-w-304">
+        <Header />
+        <main>
+          <div className="flex flex-col gap-8">
 
-          {!isTestOver && (
-            <div
-              className="flex flex-col items-baseline gap-5 pb-5 md:gap-4 md:pb-4
-            xl-1200:flex-row xl-1200:justify-between border-b border-neutral-700 relative">
-              <StatsBar />
-              <ControlBar />
-              {progress > 0 && 
+            {!isTestOver && (
               <div
-                className="absolute left-0 bottom-0 h-0.5 bg-blue-500 transition-all duration-300 shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
-                style={{ width: `${progress * 100}%` }}
-              />  
-              }
-            </div>
-          )}
-          {!isTestOver && <TypingArea />}
-          {isTestOver && <Results />}
-        </div>
-      </main>
+                className="flex flex-col items-baseline gap-5 pb-5 md:gap-4 md:pb-4
+            xl-1200:flex-row xl-1200:justify-between border-b border-neutral-700 relative">
+                <StatsBar />
+                <ControlBar />
+                {progress > 0 &&
+                  <div
+                    className="absolute left-0 bottom-0 h-0.5 bg-blue-500 transition-all duration-300 shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
+                    style={{ width: `${progress * 100}%` }}
+                  />
+                }
+              </div>
+            )}
+            {!isTestOver && <TypingArea />}
+            {isTestOver && <Results />}
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
