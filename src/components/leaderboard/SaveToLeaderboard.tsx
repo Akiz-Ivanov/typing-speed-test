@@ -16,7 +16,8 @@ const SaveToLeaderboard = ({ wpm, accuracy }: SaveToLeaderboardProps) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
-  const [showForm, setShowForm] = useState(!nickname)
+  
+  const showForm = !nickname
 
   useEffect(() => {
     if (nickname && !isSuccess && !isSubmitting) {

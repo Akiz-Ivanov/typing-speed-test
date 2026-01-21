@@ -4,61 +4,61 @@
       "id": "easy-1",
       "text": "Twinkle, twinkle, little star, how I wonder what you are! Up above the world so high, like a diamond in the sky. Twinkle, twinkle, little star, how I wonder what you are!",
       "title": "Twinkle, Twinkle, Little Star",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-2",
       "text": "Oh! Susanna, oh don't you cry for me, for I come from Alabama with my banjo on my knee. I'm going to Louisiana, my true love for to see. It rained all night the day I left, the weather it was dry.",
       "title": "Oh! Susanna",
-      "artist": "Stephen Foster"
+      "author": "Stephen Foster"
     },
     {
       "id": "easy-3",
       "text": "Mary had a little lamb, little lamb, little lamb. Mary had a little lamb, its fleece was white as snow. And everywhere that Mary went, Mary went, Mary went, everywhere that Mary went, the lamb was sure to go.",
       "title": "Mary Had a Little Lamb",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-4",
       "text": "Row, row, row your boat gently down the stream. Merrily, merrily, merrily, merrily, life is but a dream. Row, row, row your boat gently down the stream, if you see a crocodile, don't forget to scream!",
       "title": "Row, Row, Row Your Boat",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-5",
       "text": "London Bridge is falling down, falling down, falling down. London Bridge is falling down, my fair lady. Build it up with iron bars, iron bars, iron bars. Build it up with iron bars, my fair lady.",
       "title": "London Bridge Is Falling Down",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-6",
       "text": "This old man, he played one, he played knick-knack on my thumb. With a knick-knack paddywhack, give a dog a bone, this old man came rolling home. This old man, he played two, he played knick-knack on my shoe.",
       "title": "This Old Man",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-7",
       "text": "The wheels on the bus go round and round, round and round, round and round. The wheels on the bus go round and round, all through the town. The wipers on the bus go swish, swish, swish, swish, swish, swish, swish, swish, swish.",
       "title": "The Wheels on the Bus",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-8",
       "text": "Baa, baa, black sheep, have you any wool? Yes sir, yes sir, three bags full. One for the master, one for the dame, and one for the little boy who lives down the lane.",
       "title": "Baa Baa Black Sheep",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-9",
       "text": "Hickory dickory dock, the mouse ran up the clock. The clock struck one, the mouse ran down, hickory dickory dock. Hickory dickory dock, the mouse ran up the clock.",
       "title": "Hickory Dickory Dock",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "easy-10",
       "text": "Itsy bitsy spider climbed up the water spout. Down came the rain and washed the spider out. Out came the sun and dried up all the rain, and the itsy bitsy spider climbed up the spout again.",
       "title": "Itsy Bitsy Spider",
-      "artist": "Traditional"
+      "author": "Traditional"
     }
   ],
   "medium": [
@@ -66,61 +66,61 @@
       "id": "medium-1",
       "text": "Amazing grace! How sweet the sound that saved a wretch like me! I once was lost, but now am found; was blind, but now I see. 'Twas grace that taught my heart to fear, and grace my fears relieved; how precious did that grace appear the hour I first believed!",
       "title": "Amazing Grace",
-      "artist": "John Newton"
+      "author": "John Newton"
     },
     {
       "id": "medium-2",
       "text": "Take me out to the ball game, take me out with the crowd. Buy me some peanuts and Cracker Jack, I don't care if I never get back. Let me root, root, root for the home team, if they don't win it's a shame. For it's one, two, three strikes, you're out at the old ball game.",
       "title": "Take Me Out to the Ball Game",
-      "artist": "Jack Norworth"
+      "author": "Jack Norworth"
     },
     {
       "id": "medium-3",
       "text": "My Bonnie lies over the ocean, my Bonnie lies over the sea. My Bonnie lies over the ocean, oh bring back my Bonnie to me. Bring back, bring back, oh bring back my Bonnie to me, to me. Bring back, bring back, oh bring back my Bonnie to me.",
       "title": "My Bonnie Lies Over the Ocean",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "medium-4",
       "text": "Oh, I come from Alabama with my banjo on my knee, I'm going to Louisiana, my true love for to see. It rained all night the day I left, the weather it was dry, the sun so hot I froze to death, Susanna, don't you cry. Oh, Susanna, oh don't you cry for me, for I come from Alabama with my banjo on my knee.",
       "title": "Oh! Susanna (Extended)",
-      "artist": "Stephen Foster"
+      "author": "Stephen Foster"
     },
     {
       "id": "medium-5",
       "text": "What shall we do with the drunken sailor, what shall we do with the drunken sailor, what shall we do with the drunken sailor early in the morning? Hooray and up she rises, hooray and up she rises, hooray and up she rises early in the morning! Put him in the longboat till he's sober, put him in the longboat till he's sober...",
       "title": "Drunken Sailor",
-      "artist": "Sea Shanty"
+      "author": "Sea Shanty"
     },
     {
       "id": "medium-6",
       "text": "Oh Shenandoah, I long to hear you, away, you rolling river. Oh Shenandoah, I long to hear you, away, I'm bound away, 'cross the wide Missouri. Oh Shenandoah, I love your daughter, away, you rolling river...",
       "title": "Shenandoah",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "medium-7",
       "text": "I've been working on the railroad, all the live-long day. I've been working on the railroad, just to pass the time away. Don't you hear the whistle blowing, rise up so early in the morn? Don't you hear the captain shouting, 'Dinah, blow your horn!'",
       "title": "I've Been Working on the Railroad",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "medium-8",
       "text": "Buffalo gals, won't you come out tonight, come out tonight, come out tonight? Buffalo gals, won't you come out tonight, and dance by the light of the moon? I asked her if she'd stop and talk, stop and talk, stop and talk...",
       "title": "Buffalo Gals",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "medium-9",
       "text": "Home, home on the range, where the deer and the antelope play. Where seldom is heard a discouraging word, and the skies are not cloudy all day. Where the air is so pure, the zephyrs so free, the breezes so balmy and light, that I would not exchange my home on the range for all of the cities so bright.",
       "title": "Home on the Range",
-      "artist": "Brewster Higley"
+      "author": "Brewster Higley"
     },
     {
       "id": "medium-10",
       "text": "There is a tavern in the town, in the town, and there my dear love sits him down, sits him down, and drinks his wine 'mid laughter free, and never, never thinks of me. Fare thee well, for I must leave thee, do not let the parting grieve thee...",
       "title": "There Is a Tavern in the Town",
-      "artist": "Traditional"
+      "author": "Traditional"
     }
   ],
   "hard": [
@@ -128,61 +128,61 @@
       "id": "hard-1",
       "text": "Leave her, Johnny, leave her! Oh, leave her, Johnny, leave her! For the voyage is long and the winds don't blow, and it's time for us to leave her. Oh, the times were hard and the wages low, leave her, Johnny, leave her! And now ashore again we'll go, leave her, Johnny, leave her! I hate to sail on this rotten tub, no grog allowed and rotten grub. We're homeward bound and that's for sure, we're tired of working like dogs no more. So it's pack your bag and grab your gear, for we're saying goodbye to the dockside cheer.",
       "title": "Leave Her, Johnny",
-      "artist": "Sea Shanty"
+      "author": "Sea Shanty"
     },
     {
       "id": "hard-2",
       "text": "The minstrel boy to the war is gone, in the ranks of death you'll find him. His father's sword he has girded on, and his wild harp slung behind him. 'Land of song!' said the warrior bard, 'Though all the world betrays thee, one sword, at least, thy rights shall guard, one faithful harp shall praise thee!' The minstrel fell, but the foeman's chain could not bring that proud soul under. The harp he loved ne'er spoke again, for he tore its chords asunder, and said, 'No chains shall sully thee, thou soul of love and bravery! Thy songs were made for the pure and free, they shall never sound in slavery!'",
       "title": "The Minstrel Boy",
-      "artist": "Thomas Moore"
+      "author": "Thomas Moore"
     },
     {
       "id": "hard-3",
       "text": "I dreamed a dream in time gone by, when hope was high and life worth living. I dreamed that love would never die, I dreamed that God would be forgiving. Then I was young and unafraid, and dreams were made and used and wasted. There was no ransom to be paid, no song unsung, no wine untasted. But the tigers come at night, with their voices soft as thunder, as they tear your hope apart, as they turn your dream to shame. He slept a summer by my side, he filled my days with endless wonder, he took my childhood in his stride, but he was gone when autumn came.",
       "title": "I Dreamed a Dream",
-      "artist": "From Les Misérables (public domain novel, lyrics by Herbert Kretzmer based on Hugo)"
+      "author": "From Les Misérables (public domain novel, lyrics by Herbert Kretzmer based on Hugo)"
     },
     {
       "id": "hard-4",
       "text": "The water is wide, I cannot get o'er, and neither have I wings to fly. Give me a boat that can carry two, and both shall row, my love and I. Oh, down in the meadows the other day, a-gathering flowers both fine and gay, a-gathering flowers both red and blue, I little thought what love can do. I leaned my back up against an oak, thinking it was a trusty tree; but first it bent and then it broke, and so did my false love to me. A ship there is and she sails the sea, she's loaded deep as deep can be, but not so deep as the love I'm in: I know not if I sink or swim.",
       "title": "The Water Is Wide",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "hard-5",
       "text": "Scarborough Fair, are you going to Scarborough Fair? Parsley, sage, rosemary, and thyme. Remember me to one who lives there, for she once was a true love of mine. Tell her to make me a cambric shirt, parsley, sage, rosemary, and thyme, without any seam or fine needle work, and then she'll be a true love of mine. Tell her to wash it in yonder well, parsley, sage, rosemary, and thyme, where water ne'er sprung nor drop of rain fell, and then she'll be a true love of mine. Tell her to dry it on yonder thorn, parsley, sage, rosemary, and thyme, which never bore blossom since Adam was born, and then she'll be a true love of mine.",
       "title": "Scarborough Fair",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "hard-6",
       "text": "Oh, Danny boy, the pipes, the pipes are calling from glen to glen, and down the mountain side. The summer's gone, and all the roses falling, it's you, it's you must go and I must bide. But come ye back when summer's in the meadow, or when the valley's hushed and white with snow, it's I'll be here in sunshine or in shadow, oh Danny boy, oh Danny boy, I love you so! And if you come, when all the flowers are dying, and I am dead, as dead I well may be, you'll come and find the place where I am lying, and kneel and say an 'Ave' there for me. And I shall hear, though soft you tread above me, and all my grave will warmer, sweeter be, for you will bend and tell me that you love me, and I shall sleep in peace until you come to me!",
       "title": "Danny Boy",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "hard-7",
       "text": "The streets of Laredo, as I walked out in the streets of Laredo, as I walked out in Laredo one day, I spied a young cowboy wrapped up in white linen, wrapped up in white linen as cold as the clay. 'I see by your outfit that you are a cowboy,' these words he did say as I boldly stepped by. 'Come sit down beside me and hear my sad story, for I'm shot in the breast and I know I must die.' 'It was once in the saddle I used to go dashing, it was once in the saddle I used to go gay, first to the dram-house and then to the card-house, got shot in the breast and I'm dying today.",
       "title": "Streets of Laredo",
-      "artist": "Traditional Cowboy Song"
+      "author": "Traditional Cowboy Song"
     },
     {
       "id": "hard-8",
       "text": "In Dublin's fair city, where the girls are so pretty, I first set my eyes on sweet Molly Malone. She wheeled her wheelbarrow through streets broad and narrow, crying, 'Cockles and mussels, alive, alive, oh!' Alive, alive, oh! Alive, alive, oh! Crying, 'Cockles and mussels, alive, alive, oh!' She was a fishmonger, and sure 'twas no wonder, for so were her father and mother before, and they each wheeled their barrow through streets broad and narrow, crying, 'Cockles and mussels, alive, alive, oh!' She died of a fever, and no one could save her, and that was the end of sweet Molly Malone. But her ghost wheels her barrow through streets broad and narrow, crying, 'Cockles and mussels, alive, alive, oh!'",
       "title": "Molly Malone",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "hard-9",
       "text": "A fox went out on a chilly night, he prayed for the moon to give him light, for he'd many a mile to go that night before he reached the town-o, town-o, town-o, he'd many a mile to go that night before he reached the town-o. He ran till he came to a great big pen, where the ducks and the geese were put therein. 'A couple of you will grease my chin before I leave this town-o, town-o, town-o, a couple of you will grease my chin before I leave this town-o.' He grabbed the grey goose by the neck, threw a duck across his back, he didn't mind their quack, quack, quack, and their legs all dangling down-o, down-o, down-o...",
       "title": "The Fox",
-      "artist": "Traditional"
+      "author": "Traditional"
     },
     {
       "id": "hard-10",
       "text": "I know an old lady who swallowed a fly, I don't know why she swallowed a fly, perhaps she'll die. I know an old lady who swallowed a spider that wriggled and jiggled and tickled inside her. She swallowed the spider to catch the fly, but I don't know why she swallowed the fly, perhaps she'll die. I know an old lady who swallowed a bird, how absurd to swallow a bird! She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her. She swallowed the spider to catch the fly, but I don't know why she swallowed the fly, perhaps she'll die. I know an old lady who swallowed a cat, imagine that, she swallowed a cat! She swallowed the cat to catch the bird...",
       "title": "There Was an Old Lady Who Swallowed a Fly",
-      "artist": "Traditional"
+      "author": "Traditional"
     }
   ]
 }

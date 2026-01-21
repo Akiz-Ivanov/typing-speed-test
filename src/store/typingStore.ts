@@ -82,6 +82,11 @@ export const useTypingStore = create<TypingState>()(
 
           //* Get random text
           const passage = getRandomText(textCategory, difficulty)
+          
+          if (passage === state.currentPassage) {
+            state.generateRandomPassage()
+            return
+          }
 
           // Normalize hyphens
           const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
@@ -89,7 +94,7 @@ export const useTypingStore = create<TypingState>()(
           set({ currentPassage: normalized })
         } catch (error) {
           console.error('Failed to generate passage:', error)
-          // Fallback to a default message
+          //* Fallback to a default message
           set({ currentPassage: "Error: Unable to load text. Please try again." })
         }
       },
