@@ -215,7 +215,6 @@
     background: hsl(var(--neutral-600));
   }
 
-  /* Firefox */
   .history-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--neutral-700)) hsl(var(--neutral-900));

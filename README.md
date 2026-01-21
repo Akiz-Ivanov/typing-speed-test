@@ -1,138 +1,259 @@
-# Frontend Mentor - Typing Speed Test solution
+# <img src="./public/favicon-32x32.png" width="30" height="30" alt="Typing Speed Test Icon"> Typing Speed Test
 
-This is a solution to the [Typing Speed Test challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/typing-speed-test). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-blue?style=for-the-badge&logo=vercel&logoColor=white)](https://typing-speed-test-iota-flame.vercel.app/)
+[![Frontend Mentor](https://img.shields.io/badge/Frontend%20Mentor-Challenge-brightgreen?style=for-the-badge&logo=frontendmentor)](https://www.frontendmentor.io/challenges/typing-speed-test)
 
-## Table of contents
+A modern typing speed test with real-time WPM tracking, personal best records, and global leaderboards. Built with React, TypeScript, Tailwind CSS, and Supabase for the Frontend Mentor hackathon challenge.
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-- [Author](#author)
+🎮 **[Try it Live](https://typing-speed-test-iota-flame.vercel.app/)**
 
-## Overview
+![Typing Speed Test Screenshot](./screenshots/desktop-screenshot.png)
 
-### The challenge
+## 📚 Table of Contents
 
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🎯 The Challenge](#-the-challenge)
+- [💡 Key Learnings](#-key-learnings)
+- [📸 Screenshots](#-screenshots)
+- [🚀 Installation](#-installation)
+- [👨‍💻 Author](#-author)
+
+## ✨ Features
+
+### Core Functionality
+- ⚡ **Real-time WPM & Accuracy Tracking** - Live statistics update as you type
+- 🎯 **Three Difficulty Levels** - Easy, Medium, and Hard passages
+- ⏱️ **Multiple Test Modes** - Choose from 15s, 30s, 45s, 60s, 120s, or Passage mode
+- 📝 **5 Text Categories** - Passages, Quotes, Poems, Lyrics, and Speeches
+- 🎨 **Responsive Design** - Seamless experience from mobile to desktop
+- ♿ **Accessibility First** - Full screen reader support with ARIA live regions
+
+### Enhanced Features
+- 🏆 **Global Leaderboard** - Compete with typists worldwide (powered by Supabase)
+  - Real-time updates when new scores are submitted
+  - One entry per nickname with auto-updating personal bests
+  - No authentication required - just pick a nickname!
+- 📊 **Test History & Analytics** - Track your progress with detailed charts
+  - Performance trend visualization with Recharts
+  - Last 50 tests saved locally
+  - WPM progression over time
+- 🎊 **Personal Best Celebrations** - Confetti animations when you beat your high score
+- 📤 **Shareable Results** - Share your achievements on social media
+  - Pre-filled share text with WPM and accuracy
+  - Multiple platforms: Twitter, Facebook, WhatsApp, LinkedIn, etc.
+  - Direct copy-to-clipboard functionality
+- ⚙️ **Test Configuration Dialog** - Unified settings panel on mobile
+- 🎨 **Smooth Animations** - Polished UI with Framer Motion transitions
+
+![Features Collage](./screenshots/features-collage.png)
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19** + **TypeScript** - Modern, type-safe development
+- **Zustand** - Lightweight state management with localStorage persistence
+- **Tailwind CSS v4** - Utility-first styling with custom design tokens
+- **Vite** - Lightning-fast dev server and optimized builds
+
+### UI Components & Libraries
+- **shadcn/ui** (Radix UI) - Accessible, unstyled component primitives
+- **Recharts** - Composable charting library for performance graphs
+- **Framer Motion** - Smooth animations and transitions
+- **Canvas Confetti** - Celebration effects for personal bests
+- **Lucide React** - Beautiful, consistent icon set
+- **date-fns** - Modern date utility library
+
+### Backend & Database
+- **Supabase** - PostgreSQL database with real-time subscriptions
+  - Row Level Security (RLS) for public read/write access
+  - UPSERT operations for conflict-free score updates
+  - Real-time leaderboard updates via WebSocket channels
+
+### Data & Content
+- **Custom JSON dataset** - 150+ curated passages across 5 categories
+  - 30 passages per category (Passages, Quotes, Poems, Lyrics, Speeches)
+  - 10 passages per difficulty level
+  - Normalized text for consistent typing experience
+
+## 🎯 The Challenge
+
+This project was built for the [Frontend Mentor Typing Speed Test challenge](https://www.frontendmentor.io/challenges/typing-speed-test). 
+
+### Requirements
 Users should be able to:
+- ✅ View optimal layout for their device screen size
+- ✅ See hover and focus states for all interactive elements
+- ✅ Type passages and receive real-time feedback
+- ✅ Track WPM, accuracy, and time remaining
+- ✅ Configure difficulty and test duration
+- ✅ View test results with detailed statistics
 
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+### Extra Features Added
+Beyond the requirements, I implemented:
+- 🏆 **Global leaderboard** with real-time updates
+- 📊 **Test history** with performance charts
+- 📝 **5 text categories** with 150+ passages
+- 🎊 **Personal best tracking** with celebrations
+- 📤 **Social sharing** functionality
+- ⏱️ **5 timing modes** instead of just one
+- ♿ **Screen reader support** for accessibility
 
-### Screenshots
+## 💡 Key Learnings
 
-#### Desktop
+### 1. Real-time Input Handling on Mobile
+**Challenge:** Mobile keyboards don't consistently fire `onKeyDown` events, making traditional keystroke tracking unreliable.
 
-![Desktop screenshot](./screenshots/desktop-screenshot.png)
+**Solution:** Implemented a hybrid approach using `onChange` to detect input changes and calculate the delta:
+```typescript
+onChange={(e) => {
+  const newValue = e.target.value
+  if (newValue.length > userInput.length) {
+    const added = newValue.slice(userInput.length)
+    for (const char of added) {
+      handleKeyPress(char)
+    }
+  }
+}
+```
 
-#### Mobile
+This ensures consistent behavior across desktop keyboards, mobile keyboards, and even paste events.
 
-![Mobile screenshot](./screenshots/mobile-screenshot.png)
+### 2. Text Normalization for Em Dashes
+**Challenge:** Source passages contained various Unicode dash characters (em dash `—`, en dash `–`, minus sign `−`) that don't match the standard hyphen `-` on keyboards.
 
-#### Test History
+**Solution:** Normalized all dash variants to standard hyphens during passage loading:
+```typescript
+const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
+```
 
-![Test History](./screenshots/test-history.png)
+This prevents false errors when users type hyphens for em dashes.
 
-#### Mobile Test Settings
+### 3. Supabase Leaderboard with UPSERT
+**Challenge:** Multiple submissions from the same nickname would create duplicate entries or fail due to unique constraints.
 
-![Mobile Test Settings](./screenshots/mobile-settings.png)
+**Solution:** Implemented PostgreSQL's UPSERT operation:
+```typescript
+.upsert(
+  { nickname, wpm, accuracy },
+  { onConflict: 'nickname' }
+)
+```
 
-### Links
+This ensures one entry per nickname that automatically updates when users beat their personal best.
 
-- Solution URL: [https://github.com/Akiz-Ivanov/typing-speed-test](https://github.com/Akiz-Ivanov/typing-speed-test)
-- Live Site URL: [https://typing-speed-test-iota-flame.vercel.app/](https://typing-speed-test-iota-flame.vercel.app/)
+### 4. State Management with Zustand
+**Why Zustand?** Cleaner than Context API, lighter than Redux.
 
-## My process
+**Implementation:**
+- Separated concerns (typing state, history, settings)
+- Persisted user preferences and test history
+- Handled complex timer logic for countdown/countup modes
+```typescript
+export const useTypingStore = create<TypingState>()(
+  persist(
+    (set, get) => ({
+      // State and actions
+    }),
+    {
+      name: 'typing-test-storage',
+      partialize: (state) => ({
+        personalBest: state.personalBest,
+        testHistory: state.testHistory,
+        nickname: state.nickname,
+      }),
+    }
+  )
+)
+```
 
-### Built With
+### 5. Accessibility with ARIA Live Regions
+Implemented screen reader support that announces:
+- Test configuration changes
+- Real-time progress updates (WPM, accuracy, time)
+- Test completion results
+- Error states
+```typescript
+<AssistiveTechInfo
+  message={`${wpm} WPM, ${accuracy}% accuracy, ${elapsedTime} seconds remaining`}
+  type="polite"
+  debounceMs={1500}
+/>
+```
 
-- **React 19 + TypeScript** – type-safe components  
-- **Zustand** – state management with `localStorage` persistence  
-- **Tailwind CSS v4** – custom theming and utility-first styling  
-- **shadcn/ui (Radix UI)** – accessible UI primitives  
-- **Recharts** – performance and history charts  
-- **date-fns** – date formatting & timezone handling  
-- **Canvas Confetti** – personal best celebrations  
-- **Framer Motion** – smooth UI animations  
-- **Vite** – fast development and builds  
-- **Mobile-first** responsive design
+### 6. Mobile-First Responsive Design
+**Challenges:**
+- Virtual keyboard covering the typing area
+- Touch vs. click event handling
+- Limited screen real estate for controls
 
-### What I learned
+**Solutions:**
+- Unified test configuration dialog on mobile
+- Auto-scroll to keep current character visible
+- Conditional UI based on viewport size
+- Touch-optimized button sizes
 
-#### State management with Zustand
+## 📸 Screenshots
 
-I learned how to:
-- Structure stores with TypeScript
-- Handle derived state
-- Persist data
+### Desktop Experience
+![Desktop View](./screenshots/desktop-screenshot.png)
 
-#### Real-time input handling
+### Mobile Experience
+<div style="display: flex; gap: 1rem;">
+  <img src="./screenshots/mobile-screenshot.png" alt="Mobile typing" width="300">
+  <img src="./screenshots/mobile-settings.png" alt="Mobile settings" width="300">
+</div>
 
-Challenges:
-- Mobile keyboards don’t always fire onKeyDown
-- Dash characters needed normalization
-- Cursor had to stay locked at the end
+### Test History & Analytics
+![Test History with Chart](./screenshots/test-history.png)
 
-#### Timer logic
+### Leaderboard
+![Global Leaderboard](./screenshots/leaderboard.png)
 
-I implemented:
-- Count-down timers for timed modes
-- Count-up timers for passage mode
+## 🚀 Installation
 
-#### Backend integration with Supabase
+### Prerequisites
+- Node.js 18+ and npm
 
-- First-time Supabase implementation for:
+### Setup
 
-- Creating a PostgreSQL database
+1. **Clone the repository**
+```bash
+git clone https://github.com/Akiz-Ivanov/typing-speed-test
+cd typing-speed-test
+```
 
-- Implementing UPSERT operations for one-entry-per-user leaderboards
+2. **Install dependencies**
+```bash
+npm install
+```
 
-- Setting up Row Level Security (RLS) policies for safe public access
+3. **Environment setup** (optional - only needed for leaderboard)
 
-- Handling unique constraint violations and database conflicts
+Create `.env` in the project root:
+```bash
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-- Real-time subscriptions for live leaderboard updates
+4. **Run development server**
+```bash
+npm run dev
+```
 
-#### Mobile UX
+5. **Build for production**
+```bash
+npm run build
+```
 
-- Virtual keyboard behavior
-- Scrolling inside containers
-- Touch vs keyboard events
-- Performance on low-end devices
+## 👨‍💻 Author
 
-#### Social sharing
+- **Frontend Mentor** - [@Akiz97](https://www.frontendmentor.io/profile/Akiz97)
+- **GitHub** - [@Akiz-Ivanov](https://github.com/Akiz-Ivanov)
 
-- Pre-filled share text
-- Clipboard API
+---
 
-### Continued development
-
-Planned improvements:
-
-#### Leaderboards (Currently Work In Progress)
-- ✓ Backend integration with Supabase
-- ✓ Optional user nickname for entry
-- ✓ One-entry-per-user with auto-updating personal bests
-- ✓ Real-time updates
-- Enhanced UI Leaderboard (in progress)
-
-#### Better passages
-- ✓ Categories
-- API-powered content
-
-#### UX ENHANCEMENTS
-- Sound effects
-- Multiple themes
-
-#### Technical improvements
-- Error boundaries
-- Code splitting
-
-## Author
-
-- Frontend Mentor - [@Akiz97](https://www.frontendmentor.io/profile/Akiz97)
-- GitHub - [@Akiz-Ivanov](https://github.com/Akiz-Ivanov)
+**Acknowledgments:**
+- Frontend Mentor for the challenge and design
+- Supabase for the backend infrastructure
+- The open-source community for amazing tools and libraries
