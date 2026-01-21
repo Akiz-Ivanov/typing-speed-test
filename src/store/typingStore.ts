@@ -83,13 +83,13 @@ export const useTypingStore = create<TypingState>()(
           //* Get random text
           const passage = getRandomText(textCategory, difficulty)
           
-          if (passage === state.currentPassage) {
+          // Normalize hyphens
+          const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
+
+          if (normalized === state.currentPassage) {
             state.generateRandomPassage()
             return
           }
-
-          // Normalize hyphens
-          const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
 
           set({ currentPassage: normalized })
         } catch (error) {

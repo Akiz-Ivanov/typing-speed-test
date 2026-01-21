@@ -121,6 +121,10 @@ const TypingArea = () => {
             inputMode="text"
             autoCapitalize="off"
             autoCorrect="off"
+            autoComplete="off"
+            aria-autocomplete="none"
+            data-lpignore="true" // For LastPass
+            data-form-type="other"
             spellCheck={false}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
