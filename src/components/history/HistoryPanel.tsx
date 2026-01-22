@@ -1,6 +1,6 @@
-import { useTypingStore } from "@/store/typingStore";
-import { format } from "date-fns"; 
-import { Trash2 } from "lucide-react";
+import { useTypingStore } from "@/store/typingStore"
+import { format } from "date-fns"
+import { Trash2 } from "lucide-react"
 
 const HistoryPanel = () => {
   const { testHistory, clearHistory } = useTypingStore()
@@ -92,4 +92,4 @@ const HistoryPanel = () => {
   )
 }
 
-export default HistoryPanel;
+export default HistoryPanel

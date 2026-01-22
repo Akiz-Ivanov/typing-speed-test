@@ -13,6 +13,7 @@ export const useTypingStore = create<TypingState>()(
       difficulty: "Easy",
       timeMode: "Timed (60s)",
       status: "idle",
+      passageMetadata: undefined,
       currentPassage: "",
       userInput: "",
       currentIndex: 0,
@@ -28,6 +29,7 @@ export const useTypingStore = create<TypingState>()(
       nickname: null,
 
       setCurrentPassage: (passage) => set({ currentPassage: passage }),
+      setPassageMetadata: (metadata) => set({ passageMetadata: metadata }),
       setTextCategory: (textCategory) => set({ textCategory }),
       setDifficulty: (difficulty) => set({ difficulty }),
       setTimeMode: (timeMode) => set({ timeMode }),
@@ -82,16 +84,20 @@ export const useTypingStore = create<TypingState>()(
 
           //* Get random text
           const passage = getRandomText(textCategory, difficulty)
-          
-          // Normalize hyphens
-          const normalized = passage.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
 
-          if (normalized === state.currentPassage) {
+          console.log(passage)
+
+          if (passage.id === state.passageMetadata?.id) {
             state.generateRandomPassage()
             return
           }
+          // Normalize hyphens
+          const normalized = passage.text.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
 
-          set({ currentPassage: normalized })
+          set({
+            currentPassage: normalized,
+            passageMetadata: { ...passage, text: normalized }
+          })
         } catch (error) {
           console.error('Failed to generate passage:', error)
           //* Fallback to a default message
@@ -110,6 +116,7 @@ export const useTypingStore = create<TypingState>()(
       },
 
       handleKeyPress: (key) => {
+
         if (key.length > 1 && key !== 'Backspace') return
 
         const state = get()

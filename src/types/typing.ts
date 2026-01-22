@@ -8,6 +8,14 @@ export type TimeMode =
   | "Timed (120s)"
   | "Passage"
 type TestStatus = "idle" | "active" | "complete"
+export interface PassageMetadata {
+  id: string
+  text: string
+  title?: string
+  author?: string
+  speaker?: string
+  year?: number | string
+}
 export interface TestResult {
   id: string;
   wpm: number;
@@ -29,6 +37,7 @@ export interface TypingState {
   //* Test state
   status: TestStatus
   currentPassage: string
+  passageMetadata: PassageMetadata | undefined
   userInput: string
   currentIndex: number
 
@@ -50,6 +59,7 @@ export interface TypingState {
   setTimeMode: (mode: TimeMode) => void
   setPersonalBest: (wpm: number) => void
   setNickname: (nickname: string) => void
+  setPassageMetadata: (metadata: PassageMetadata) => void
   
   startTest: () => void
   generateRandomPassage: () => void

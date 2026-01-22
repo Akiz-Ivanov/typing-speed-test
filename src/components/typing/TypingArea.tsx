@@ -5,6 +5,7 @@ import iconRestart from "@/assets/images/icon-restart.svg"
 import { useTypingStore } from "@/store/typingStore"
 import useScrollToCurrentChar from "@/hooks/useScrollToCurrentChar"
 import AssistiveTechInfo from "../common/AssistiveTechInfo"
+import PassageMetadataDisplay from "./PassageMetadataDisplay"
 
 const TypingArea = () => {
 
@@ -19,6 +20,7 @@ const TypingArea = () => {
     wpm,
     accuracy,
     elapsedTime,
+    passageMetadata,
     generateRandomPassage,
     restartTest,
     handleKeyPress,
@@ -105,15 +107,19 @@ const TypingArea = () => {
   return (
     <div>
       <div className="typing-area pb-8 md:pb-10 xl-1200:pb-16">
-        <div className="relative">
+        <div className="relative group">
 
           {isActive && !isInputFocused && (
-            <span 
-              className="absolute -top-3 text-gray-600/70 -translate-1/2 left-1/2 text-nowrap"
-            >
+            <span className="absolute -top-3 text-gray-600/70 -translate-1/2 left-1/2 text-nowrap">
               Select text to continue typing
             </span>
           )}
+
+          {/* {isActive && passageMetadata && (
+            <div className="absolute -bottom-12 left-0 right-0 text-center">
+              <PassageMetadataDisplay />
+            </div>
+          )} */}
 
           <input
             ref={inputRef}
@@ -123,17 +129,16 @@ const TypingArea = () => {
             autoCorrect="off"
             autoComplete="off"
             aria-autocomplete="none"
-            data-lpignore="true" // For LastPass
+            data-lpignore="true"
             data-form-type="other"
             spellCheck={false}
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
-            className="absolute inset-0 opacity-0 cursor-pointer"
+            className={cn("absolute inset-0 opacity-0 cursor-pointer")}
             value={userInput}
             disabled={!isActive}
             onChange={(e) => {
               const newValue = e.target.value
-
               if (newValue.length < userInput.length) {
                 const backspaceCount = userInput.length - newValue.length
                 for (let i = 0; i < backspaceCount; i++) {
@@ -176,13 +181,19 @@ const TypingArea = () => {
             "typing-area-text text-[2rem] md:text-[2.5rem] text-neutral-400 transition-all",
             isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden",
             isActive && "max-h-[70vh] sm:max-h-none overflow-y-auto md:overflow-y-clip",
-            isActive && !isInputFocused && "text-blue-300/90"
+            isActive && !isInputFocused && "text-blue-300/60 group-hover:text-blue-300/90"
           )}
+            style={{
+              fontVariantLigatures: 'none',
+              fontFeatureSettings: '"liga" 0, "clig" 0',
+              WebkitFontFeatureSettings: '"liga" 0, "clig" 0',
+            }}
           >
             {currentPassage.split('').map((char, i) => (
               <span
                 key={i}
                 data-char-index={i}
+                data-test={`pos=${i},currentIndex=${currentIndex},userInput[i]=${userInput[i]},condition=${i < currentIndex}`}
                 className={cn(
                   i < currentIndex && (
                     userInput[i] === char ? 'text-green-500' : 'text-red-500 underline'
@@ -234,8 +245,8 @@ const TypingArea = () => {
         message={
           status === "idle" ? `Typing test ready. Press any letter to start. ${difficulty} difficulty, ${timeMode} mode.`
             : status === "active"
-            ? `${currentIndex} of ${currentPassage.length} characters. ${wpm} WPM, ${accuracy}% accuracy.${timeMode !== "Passage" ? ` ${elapsedTime} seconds remaining.` : ""}`
-            : ""
+              ? `${currentIndex} of ${currentPassage.length} characters. ${wpm} WPM, ${accuracy}% accuracy.${timeMode !== "Passage" ? ` ${elapsedTime} seconds remaining.` : ""}`
+              : ""
         }
         type="polite"
         debounceMs={status === "active" ? 1500 : 500} //* Less frequent during typing

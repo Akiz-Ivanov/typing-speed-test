@@ -193,6 +193,34 @@ Implemented screen reader support that announces:
 - Conditional UI based on viewport size
 - Touch-optimized button sizes
 
+### 7. Font Ligature Nightmare: The "ff" Bug
+**Challenges:**
+- The Bug: For days, a mysterious bug caused the second 'f' in words like "coffee" to appear green when it shouldn't be, or to disappear entirely. The issue only affected double 'f's, not other repeated letters.
+
+- Root Cause: Font ligatures in the Sora font were rendering "ff" as a single glyph (ﬃ), causing the second <span> element to have 0 width. This meant:
+
+- The second 'f' was invisible to users and error highlighting didn't work correctly for ligatured characters
+
+**Debug Journey:**
+
+- Initially suspected React state timing issues
+
+- Debugged with extensive console logging
+
+- Discovered via DOM inspection that second 'f' span had width 0
+
+- Tested multiple font rendering solutions
+
+**Solution:** Disabled ligatures specifically in the typing area:
+
+```css
+font-variant-ligatures: none;
+font-feature-settings: "liga" 0, "clig" 0;
+-webkit-font-feature-settings: "liga" 0, "clig" 0;
+```
+
+- Lesson Learned: Always disable ligatures in typing interfaces and test with common ligature sequences early in development.
+
 ## 📸 Screenshots
 
 ### Desktop Experience

@@ -61,7 +61,7 @@ export async function getTextsByCategory(category: TextCategory): Promise<TextDa
   }
 }
 
-export function getRandomText(category: TextCategory, difficulty: Difficulty): string {
+export function getRandomText(category: TextCategory, difficulty: Difficulty): TextItem {
   const data = dataCache.get(category)
   if (!data) {
     throw new Error(`Data for category ${category} not loaded. Call getTextsByCategory first.`)
@@ -76,13 +76,13 @@ export function getRandomText(category: TextCategory, difficulty: Difficulty): s
     if (passagesData && passagesData[difficultyKey]) {
       const fallbackTexts = passagesData[difficultyKey]
       const randomIndex = Math.floor(Math.random() * fallbackTexts.length)
-      return fallbackTexts[randomIndex].text
+      return fallbackTexts[randomIndex]
     }
     throw new Error(`No texts found for ${category} - ${difficulty}`)
   }
 
   const randomIndex = Math.floor(Math.random() * texts.length)
-  return texts[randomIndex].text
+  return texts[randomIndex]
 }
 
 //* Optional: Preload all categories
