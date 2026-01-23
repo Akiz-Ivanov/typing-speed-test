@@ -85,8 +85,6 @@ export const useTypingStore = create<TypingState>()(
           //* Get random text
           const passage = getRandomText(textCategory, difficulty)
 
-          console.log(passage)
-
           if (passage.id === state.passageMetadata?.id) {
             state.generateRandomPassage()
             return

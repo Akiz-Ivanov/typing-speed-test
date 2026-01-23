@@ -5,7 +5,6 @@ import iconRestart from "@/assets/images/icon-restart.svg"
 import { useTypingStore } from "@/store/typingStore"
 import useScrollToCurrentChar from "@/hooks/useScrollToCurrentChar"
 import AssistiveTechInfo from "../common/AssistiveTechInfo"
-import PassageMetadataDisplay from "./PassageMetadataDisplay"
 
 const TypingArea = () => {
 
@@ -20,7 +19,6 @@ const TypingArea = () => {
     wpm,
     accuracy,
     elapsedTime,
-    passageMetadata,
     generateRandomPassage,
     restartTest,
     handleKeyPress,
