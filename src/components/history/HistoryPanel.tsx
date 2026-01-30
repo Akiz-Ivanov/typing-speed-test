@@ -1,4 +1,4 @@
-import { useTypingStore } from "@/store/typingStore"
+import { useTypingStore } from "@/store/typing"
 import { format } from "date-fns"
 import { Trash2 } from "lucide-react"
 

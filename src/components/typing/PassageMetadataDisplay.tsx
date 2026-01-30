@@ -1,4 +1,4 @@
-import { useTypingStore } from '@/store/typingStore'
+import { useTypingStore } from '@/store/typing'
 
 interface PassageMetadataDisplayProps {
   className?: string

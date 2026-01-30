@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useTypingStore } from '@/store/typingStore'
+import { useTypingStore } from '@/store/typing'
 import { submitScore } from '@/services/leaderboardService'
 import { validateNickname, validateScore } from '@/lib/validation'
 import { Loader2, Trophy, Check } from 'lucide-react'

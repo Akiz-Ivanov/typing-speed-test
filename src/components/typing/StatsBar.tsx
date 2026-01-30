@@ -1,4 +1,4 @@
-import { useTypingStore } from "@/store/typingStore"
+import { useTypingStore } from "@/store/typing"
 import formatTime from "@/utils/formatTime"
 
 const StatsBar = () => {
@@ -23,7 +23,7 @@ const StatsBar = () => {
       return "text-yellow-400"
     } else {
       return "text-red-500"
-    } 
+    }
   }
 
   const shouldPulse = isCountDown && elapsedTime <= 5 && elapsedTime > 0

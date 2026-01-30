@@ -66,10 +66,23 @@
   --color-red-500: hsl(var(--red-500));
   --color-green-500: hsl(var(--green-500));
   --color-yellow-400: hsl(var(--yellow-400));
-  --color-hover-state: var(--hover-state-clr);
-  --color-active-state: var(--active-state-clr);
+  --color-hover-state: hsl(var(--hover-state-clr));
+  --color-active-state: hsl(var(--active-state-clr));
   --color-ring: var(--ring);
   --color-border: var(--border);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-card-bg: hsl(var(--card-bg));
+  --color-card-fg: hsl(var(--card-fg));
+  --color-btn-primary-bg: hsl(var(--btn-primary-bg));
+  --color-btn-primary-fg: hsl(var(--btn-primary-fg));
+  --color-btn-secondary-bg: hsl(var(--btn-secondary-bg));
+  --color-btn-secondary-fg: hsl(var(--btn-secondary-fg));
+  --color-select-bg: hsl(var(--select-bg));
+  --color-select-fg: hsl(var(--select-fg));
 
   --font-family-sora: 'Sora', sans-serif;
 
@@ -93,14 +106,44 @@
   --red-500: 354 63% 57%;
   --green-500: 140 63% 57%;
   --yellow-400: 49 85% 70%;
-  --hover-state-clr: hsl(var(--blue-400));
-  --active-state-clr: hsl(var(--blue-400));
-  --border: hsl(var(--neutral-400));
-  --ring: hsl(var(--blue-400));
+
+  --background: var(--neutral-900);
+  --foreground: var(--neutral-0);
+
+  --primary: var(--blue-600);
+  --primary-foreground: var(--neutral-400);
+
+  --accent: var(--blue-400);
+
+  --card-bg: hsl(var(--neutral-800));
+  --card-fg: hsl(var(--neutral-0));
+
+  --btn-primary-bg: var(--primary);
+  --btn-primary-fg: var(--foreground);
+
+  --btn-secondary-bg: hsl(var(--foreground));
+  --btn-secondary-fg: hsl(var(--background));
+
+  --select-bg: transparent;
+  --select-fg: hsl(var(--foreground));
+
+  --border: hsl(var(--neutral-500));
+  --ring: hsl(var(--accent));
+
+  --hover-state-clr: var(--accent);
+  --active-state-clr: var(--accent);
 
   --font-sora: 'Sora', sans-serif;
 
   --radius-8: .5rem;
+}
+
+[data-theme="light"] {
+  --background: var(--neutral-0);
+  --foreground: var(--neutral-900);
+  --primary: var(--blue-600);
+  /* --primary-foreground: var(--neutral-400); */
+  --accent: var(--blue-400);
 }
 
 @layer base {
@@ -118,8 +161,8 @@
   }
 
   body {
-    background: hsl(var(--neutral-900));
-    color: hsl(var(--neutral-0));
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-family: var(--font-sora);
   }
 }
@@ -166,6 +209,10 @@
 
   .blur-overlay {
     backdrop-filter: blur(1rem);
+  }
+
+  .logo {
+    color: hsl(var(--foreground));
   }
 
   @keyframes green-pulse {

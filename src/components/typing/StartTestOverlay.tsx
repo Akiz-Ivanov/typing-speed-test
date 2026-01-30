@@ -1,4 +1,4 @@
-import { useTypingStore } from "@/store/typingStore"
+import { useTypingStore } from "@/store/typing"
 
 const StartTestOverlay = () => {
 
@@ -13,15 +13,15 @@ const StartTestOverlay = () => {
     >
       <button
         type="button"
-        className="bg-blue-600 text-neutral-0 px-6 py-3 rounded-xl 
-              hover:bg-blue-400 cursor-pointer
+        className="bg-btn-primary-bg px-6 py-3 rounded-xl 
+              hover:bg-hover-state cursor-pointer
               transition-all duration-200
               focus-visible:ring-offset-2 focus-visible:ring-offset-black
               focus-visible:ring-2 focus-visible:ring-active-state border-none outline-none active:scale-95"
       >
         Start Typing Test
       </button>
-      <p className="text-neutral-0 select-none mx-auto">Or click the text and start typing</p>
+      <p className="select-none mx-auto">Or click the text and start typing</p>
     </div>
   )
 }

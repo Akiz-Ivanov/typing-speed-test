@@ -26,7 +26,7 @@ export interface TestResult {
   correctChars: number;
   incorrectChars: number;
 }
-export interface TypingState {
+export interface TypingStore {
   nickname: string | null
 
   //* Settings

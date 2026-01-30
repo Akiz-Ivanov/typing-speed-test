@@ -1,12 +1,12 @@
 import { create } from 'zustand'
-import type { TestResult, TypingState } from '@/types/typing'
+import type { TestResult, TypingStore } from '@/types/typing'
 import { persist } from 'zustand/middleware'
 import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode'
 import { getRandomText, getTextsByCategory } from '@/services/dataService'
 
 let timerInterval: number | null = null
 
-export const useTypingStore = create<TypingState>()(
+export const useTypingStore = create<TypingStore>()(
   persist(
     (set, get) => ({
       textCategory: "passages",

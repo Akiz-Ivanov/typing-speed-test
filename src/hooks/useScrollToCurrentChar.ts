@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { useTypingStore } from "../store/typingStore"
+import { useTypingStore } from "../store/typing"
 
 const useScrollToCurrentChar = () => {
   const { currentIndex, status } = useTypingStore()

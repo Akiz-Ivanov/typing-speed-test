@@ -1,7 +1,7 @@
 import logoSmall from "@/assets/images/logo-small.svg"
 import logoLarge from "@/assets/images/logo-large.svg"
 import personalBestSvg from "@/assets/images/icon-personal-best.svg"
-import { useTypingStore } from "@/store/typingStore"
+import { useTypingStore } from "@/store/typing"
 import HistoryDialog from "../history/HistoryDialog"
 import LeaderboardDialog from "../leaderboard/LeaderboardDialog"
 
@@ -13,13 +13,19 @@ const Header = () => {
     <header className="w-full mb-32-64 flex justify-between items-center">
 
       <div className="flex items-center gap-6">
-        <h1>
-          <picture>
-            <source media="(min-width: 48rem)" srcSet={logoLarge} />
-            <img
-              src={logoSmall}
-              alt="Typing Speed Test: Measure your typing speed and accuracy." />
-          </picture>
+        <h1 className="flex items-center gap-2">
+          <img
+            src={logoSmall}
+            alt=""
+          />
+          <div className="hidden md:flex md:flex-col gap-0.5">
+            <span className="text-2xl font-semibold leading-tight">
+              Typing Speed Test
+            </span>
+            <span className="text-[.75rem] text-primary-foreground leading-tight">
+              Type as fast as you can in 60 seconds
+            </span>
+          </div>
         </h1>
 
         {/* Buttons next to logo on desktop */}
@@ -40,13 +46,13 @@ const Header = () => {
         <div className="flex items-center gap-2.5">
           <img src={personalBestSvg} alt="" className="w-5" />
           <p className="gap-1 inline-flex items-baseline">
-            <span className="text-neutral-400 text-base hidden md:inline">
+            <span className="text-primary-foreground text-base hidden md:inline">
               Personal best:
             </span>
-            <span className="text-neutral-400 text-base md:hidden">
+            <span className="text-primary-foreground text-base md:hidden">
               Best:
             </span>
-            <span className="text-neutral-0 text-lg ml-2">{personalBest} WPM</span>
+            <span className="text-lg ml-2">{personalBest} WPM</span>
           </p>
         </div>
       </div>

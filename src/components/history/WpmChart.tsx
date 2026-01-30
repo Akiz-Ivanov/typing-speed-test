@@ -21,7 +21,7 @@ const WpmChart = ({ history }: { history: TestResult[] }) => {
 
   return (
     <div className="mt-4 p-4 bg-neutral-900/40 rounded-lg h-64 w-full">
-      <h4 className="text-sm font-semibold text-neutral-300 mb-3">Performance Trend</h4>
+      <h4 className="text-sm font-semibold mb-3">Performance Trend</h4>
       <ResponsiveContainer width="100%" height="100%" className={`pb-2`}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--neutral-700))" />

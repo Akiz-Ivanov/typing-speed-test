@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import StartTestOverlay from "./StartTestOverlay"
 import iconRestart from "@/assets/images/icon-restart.svg"
-import { useTypingStore } from "@/store/typingStore"
+import { useTypingStore } from "@/store/typing"
 import useScrollToCurrentChar from "@/hooks/useScrollToCurrentChar"
 import AssistiveTechInfo from "../common/AssistiveTechInfo"
 
@@ -176,7 +176,7 @@ const TypingArea = () => {
           />
 
           <p className={cn(
-            "typing-area-text text-[2rem] md:text-[2.5rem] text-neutral-400 transition-all",
+            "typing-area-text text-[2rem] md:text-[2.5rem] text-primary-foreground transition-all",
             isIdle && "blur-lg select-none max-h-[70vh] overflow-hidden",
             isActive && "max-h-[70vh] sm:max-h-none overflow-y-auto md:overflow-y-clip",
             isActive && !isInputFocused && "text-blue-300/60 group-hover:text-blue-300/90"
