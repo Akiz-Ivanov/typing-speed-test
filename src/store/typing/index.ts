@@ -1,301 +1,20 @@
 import { create } from 'zustand'
-import type { TestResult, TypingStore } from '@/types/typing'
 import { persist } from 'zustand/middleware'
+import { createSettingsSlice, type SettingsSlice } from './settingsSlice'
+import { createTestSlice, type TestSlice } from './testSlice'
+import { createStatsSlice, type StatsSlice } from './statsSlice'
+import { createHistorySlice, type HistorySlice } from './historySlice'
 import parseTimeFromTimeMode from '@/utils/parseTimeFromTimeMode'
-import { getRandomText, getTextsByCategory } from '@/services/dataService'
 
-let timerInterval: number | null = null
+export type TypingStore = SettingsSlice & TestSlice & StatsSlice & HistorySlice
 
 export const useTypingStore = create<TypingStore>()(
   persist(
-    (set, get) => ({
-      textCategory: "passages",
-      difficulty: "Easy",
-      timeMode: "Timed (60s)",
-      status: "idle",
-      passageMetadata: undefined,
-      currentPassage: "",
-      userInput: "",
-      currentIndex: 0,
-      startTime: null,
-      elapsedTime: 0,
-      wpm: 0,
-      accuracy: 100,
-      correctChars: 0,
-      incorrectChars: 0,
-      personalBest: 0,
-      resultStatus: "first-test",
-      testHistory: [],
-      nickname: null,
-
-      setCurrentPassage: (passage) => set({ currentPassage: passage }),
-      setPassageMetadata: (metadata) => set({ passageMetadata: metadata }),
-      setTextCategory: (textCategory) => set({ textCategory }),
-      setDifficulty: (difficulty) => set({ difficulty }),
-      setTimeMode: (timeMode) => set({ timeMode }),
-      setPersonalBest: (wpm) => set({ personalBest: wpm }),
-      setNickname: (nickname) => set({ nickname }),
-
-      addToHistory: (result: Omit<TestResult, 'id' | 'date'>) => set((state) => {
-        const newEntry: TestResult = {
-          ...result,
-          id: Date.now().toString(),
-          date: new Date().toISOString(),
-        }
-
-        //* Last 50 entries
-        const updatedHistory = [newEntry, ...state.testHistory].slice(0, 50)
-
-        return { testHistory: updatedHistory }
-      }),
-
-      clearHistory: () => set({ testHistory: [] }),
-
-      startTest: () => {
-        const state = get()
-        const timeLimit = parseTimeFromTimeMode(state.timeMode)
-
-        //* For Passage mode: start at 0, count up
-        //* For Timed mode: start at the time limit, count down
-        const initialElapsedTime = timeLimit === null ? 0 : timeLimit
-
-        set({
-          status: "active",
-          userInput: "",
-          currentIndex: 0,
-          startTime: Date.now(),
-          elapsedTime: initialElapsedTime,
-          correctChars: 0,
-          incorrectChars: 0,
-          wpm: 0,
-          accuracy: 100
-        })
-
-        state.startTimer()
-      },
-
-      generateRandomPassage: async () => {
-        const state = get()
-        const { textCategory, difficulty } = state
-
-        try {
-          //* Load data for category if not cached
-          await getTextsByCategory(textCategory)
-
-          //* Get random text
-          const passage = getRandomText(textCategory, difficulty)
-
-          if (passage.id === state.passageMetadata?.id) {
-            state.generateRandomPassage()
-            return
-          }
-          // Normalize hyphens
-          const normalized = passage.text.replace(/[\u2010-\u2015\u2043\uFE63\uFF0D\u2212]/g, '-')
-
-          set({
-            currentPassage: normalized,
-            passageMetadata: { ...passage, text: normalized }
-          })
-        } catch (error) {
-          console.error('Failed to generate passage:', error)
-          //* Fallback to a default message
-          set({ currentPassage: "Error: Unable to load text. Please try again." })
-        }
-      },
-
-      handleBackspace: () => {
-        const state = get()
-        if (state.currentIndex === 0) return
-
-        set({
-          currentIndex: state.currentIndex - 1,
-          userInput: state.userInput.slice(0, -1),
-        })
-      },
-
-      handleKeyPress: (key) => {
-
-        if (key.length > 1 && key !== 'Backspace') return
-
-        const state = get()
-
-        if (key === 'Backspace') {
-          state.handleBackspace()
-          return
-        }
-
-        //* Return if out of bounds
-        if (state.currentIndex >= state.currentPassage.length) return
-
-        const expectedChar = state.currentPassage[state.currentIndex]
-        const isCorrect = key === expectedChar
-        const newIndex = state.currentIndex + 1
-
-        //* Update state
-        set({
-          userInput: state.userInput + key,
-          currentIndex: newIndex,
-          correctChars: isCorrect ? state.correctChars + 1 : state.correctChars,
-          incorrectChars: !isCorrect ? state.incorrectChars + 1 : state.incorrectChars
-        })
-
-        //* Update stats
-        state.updateStats()
-
-        //* Check completion
-        if (newIndex >= state.currentPassage.length) {
-          state.completeTest()
-        }
-      },
-
-      startTimer: () => {
-        //* Clear any existing timer
-        if (timerInterval) {
-          clearInterval(timerInterval)
-          timerInterval = null
-        }
-
-        const state = get()
-        const timeLimit = parseTimeFromTimeMode(state.timeMode)
-
-        timerInterval = setInterval(() => {
-          const state = get()
-
-          if (state.status !== "active" || !state.startTime) {
-            if (timerInterval) {
-              clearInterval(timerInterval)
-              timerInterval = null
-            }
-            return
-          }
-
-          const now = Date.now()
-          const elapsedSeconds = Math.floor((now - state.startTime) / 1000)
-
-          //* For Passage mode: count up indefinitely
-          if (timeLimit === null) {
-            set({ elapsedTime: elapsedSeconds })
-          }
-          //* For Timed mode: count down, end when time's up
-          else {
-            const remainingSeconds = Math.max(0, timeLimit - elapsedSeconds)
-            set({ elapsedTime: remainingSeconds })
-
-            //* End test when time reaches 0
-            if (remainingSeconds === 0) {
-              if (timerInterval) {
-                clearInterval(timerInterval)
-                timerInterval = null
-              }
-              get().completeTest()
-              return
-            }
-          }
-          state.updateStats()
-        }, 500) //* Update every 500ms
-      },
-
-      updateStats: () => {
-        const state = get()
-
-        if (!state.startTime) return
-
-        const now = Date.now()
-        const elapsedSeconds = (now - state.startTime) / 1000
-
-        //* For Passage mode: use elapsed time directly
-        //* For Timed mode: use time elapsed (timeLimit - elapsedTime)
-        const timeLimit = parseTimeFromTimeMode(state.timeMode)
-        const timeForWpm = timeLimit === null
-          ? elapsedSeconds  //* Passage: elapsed time
-          : timeLimit - state.elapsedTime  //* Timed: time passed so far
-
-        const elapsedMinutes = timeForWpm / 60
-
-        //* Prevent division by zero
-        if (elapsedMinutes <= 0) return
-
-        const totalChars = state.correctChars + state.incorrectChars
-
-        //* WPM = (characters / 5) / minutes
-        const wpm = Math.round((state.correctChars / 5) / elapsedMinutes)
-
-        //* Accuracy = correct / total
-        const accuracy = totalChars > 0
-          ? Math.round((state.correctChars / totalChars) * 100)
-          : 100
-
-        set({
-          wpm: wpm || 0,
-          accuracy: accuracy || 100,
-        })
-      },
-
-      completeTest: () => {
-        const state = get()
-
-        //* Clear timer if running
-        if (timerInterval) {
-          clearInterval(timerInterval)
-          timerInterval = null
-        }
-
-        const finalWPM = state.wpm
-        const finalAccuracy = state.accuracy
-        const oldPersonalBest = state.personalBest
-        const isFirstTest = oldPersonalBest === 0
-        const isNewPersonalBest = finalWPM > oldPersonalBest
-
-        let resultStatus: "first-test" | "personal-best" | "default"
-        if (isFirstTest) {
-          resultStatus = "first-test"
-        } else if (isNewPersonalBest) {
-          resultStatus = "personal-best"
-        } else {
-          resultStatus = "default"
-        }
-
-        //* Update state
-        set({
-          status: "complete",
-          resultStatus,
-          personalBest: isNewPersonalBest || isFirstTest ? finalWPM : oldPersonalBest
-        })
-
-        //* Add to history
-        state.addToHistory({
-          wpm: finalWPM,
-          accuracy: finalAccuracy,
-          difficulty: state.difficulty,
-          timeMode: state.timeMode,
-          correctChars: state.correctChars,
-          incorrectChars: state.incorrectChars,
-        })
-      },
-
-      restartTest: () => {
-        //* Clear timer if running
-        if (timerInterval) {
-          clearInterval(timerInterval)
-          timerInterval = null
-        }
-
-        const state = get()
-        const timeLimit = parseTimeFromTimeMode(state.timeMode)
-        const initialElapsedTime = timeLimit === null ? 0 : timeLimit
-
-        set({
-          status: "idle",
-          userInput: "",
-          currentIndex: 0,
-          startTime: null,
-          elapsedTime: initialElapsedTime,
-          wpm: 0,
-          accuracy: 100,
-          correctChars: 0,
-          incorrectChars: 0
-        })
-      }
+    (...a) => ({
+      ...createSettingsSlice(...a),
+      ...createTestSlice(...a),
+      ...createStatsSlice(...a),
+      ...createHistorySlice(...a),
     }),
     {
       name: 'typing-test-storage',
@@ -305,8 +24,14 @@ export const useTypingStore = create<TypingStore>()(
         difficulty: state.difficulty,
         timeMode: state.timeMode,
         testHistory: state.testHistory,
-        nickname: state.nickname
+        nickname: state.nickname,
       }),
+      onRehydrateStorage: () => (state) => {
+        if (state?.timeMode) {
+          const timeLimit = parseTimeFromTimeMode(state.timeMode)
+          state.elapsedTime = timeLimit === null ? 0 : timeLimit
+        }
+      },
     }
   )
 )

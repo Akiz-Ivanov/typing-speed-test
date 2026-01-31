@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header"
 import StatsBar from "@/components/typing/StatsBar"
 import TypingArea from "./components/typing/TypingArea"
 import Results from "@/components/results/Results"
-import { useTypingStore } from "./store/typing"
+import { useTypingStore } from "@/store/typing"
 
 function App() {
 
